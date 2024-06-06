@@ -8,7 +8,7 @@ import javafx.util.Pair;
 import java.util.Map;
 
 public class ValidationUtil {
-    public static boolean validateForm(Map<TextInputControl, Pair<Label, ValidationStrategy>> fields) {
+    public static boolean isFormValid(Map<TextInputControl, Pair<Label, ValidationStrategy>> fields) {
         boolean formIsValid = true;
         for (Map.Entry<TextInputControl, Pair<Label, ValidationStrategy>> entry : fields.entrySet()) {
             TextInputControl field = entry.getKey();
@@ -25,6 +25,16 @@ public class ValidationUtil {
             }
         }
         return formIsValid;
+    }
+
+    public static void resetValidation(Map<TextInputControl, Pair<Label, ValidationStrategy>> fields) {
+        for (Map.Entry<TextInputControl, Pair<Label, ValidationStrategy>> entry : fields.entrySet()) {
+            TextInputControl field = entry.getKey();
+            Label errorLabel = entry.getValue().getKey();
+
+            field.pseudoClassStateChanged(Styles.STATE_DANGER, false);
+            errorLabel.setText("");
+        }
     }
 
     @FunctionalInterface

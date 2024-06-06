@@ -9,7 +9,10 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -37,24 +40,39 @@
                               <Font name="Arial Bold" size="18.0" />
                            </font>
                         </Label>
+                        <Label text="Nama Cabang">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </Label>
                         <TextField fx:id="nameField" promptText="Nama Cabang">
                            <VBox.margin>
-                              <Insets bottom="2.0" top="12.0" />
+                              <Insets bottom="2.0" />
                            </VBox.margin>
                         </TextField>
                         <Label fx:id="nameLabelError" prefHeight="0.0" styleClass="danger" />
-                        <TextArea fx:id="addressField" prefHeight="200.0" prefWidth="528.0" promptText="Alamat">
+                        <Label text="Alamat">
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="addressField" prefHeight="80.0" prefWidth="528.0" promptText="Alamat">
                            <padding>
                               <Insets bottom="4.0" />
                            </padding>
                            <VBox.margin>
-                              <Insets bottom="2.0" top="12.0" />
+                              <Insets bottom="2.0" />
                            </VBox.margin>
                         </TextArea>
                         <Label fx:id="addressLabelError" styleClass="danger" />
+                        <Label text="Nomor Telepon">
+                           <VBox.margin>
+                              <Insets top="4.0" />
+                           </VBox.margin>
+                        </Label>
                         <TextField fx:id="mobilePhoneField" layoutX="22.0" layoutY="51.0" promptText="Nomor Telepon">
                            <VBox.margin>
-                              <Insets bottom="2.0" top="12.0" />
+                              <Insets bottom="2.0" />
                            </VBox.margin>
                         </TextField>
                         <Label fx:id="mobilePhoneLabelError" styleClass="danger" />
@@ -83,12 +101,38 @@
                   </VBox>
                   <VBox style="-fx-background-color: #fffffe; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="List Cabang">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="tableBranch" styleClass="edge-to-edge" VBox.vgrow="ALWAYS">
+                        <GridPane>
+                           <VBox.margin>
+                              <Insets bottom="14.0" top="14.0" />
+                           </VBox.margin>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="0.0" prefWidth="0.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="284.0" minWidth="10.0" prefWidth="284.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="List Cabang">
+                                 <font>
+                                    <Font name="Arial Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="31.0" prefWidth="191.0" GridPane.columnIndex="3">
+                                 <children>
+                                    <TextField fx:id="searchField" prefHeight="26.0" prefWidth="211.0" promptText="Cari..." />
+                                    <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#doSearch" prefHeight="31.0" prefWidth="88.0" text="Cari">
+                                       <HBox.margin>
+                                          <Insets left="14.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                        <TableView fx:id="tableBranch" prefWidth="528.0" styleClass="edge-to-edge" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="noCol" prefWidth="75.0" text="No" />
                             <TableColumn fx:id="nameCol" prefWidth="148.0" text="Nama Cabang" />

@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
         Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> validationMap = new HashMap<>();
         validationMap.put(emailText, new Pair<>(errorLabelEmail, emailValidationStrategy));
         validationMap.put(passwordText, new Pair<>(errorLabelPassword, input -> input.isEmpty() ? "Password field ini wajib di isi!" : ""));
-        if (!ValidationUtil.validateForm(validationMap)) return;
+        if (ValidationUtil.isFormValid(validationMap)) return;
 
         loginBtn.setText("Loading...");
         loginBtn.setDisable(true);

@@ -1,7 +1,7 @@
 package ac.unindra.roemah_duren_spring.controller;
 
 import ac.unindra.roemah_duren_spring.JavaFxApplication;
-import ac.unindra.roemah_duren_spring.constant.ConstantPage;
+import ac.unindra.roemah_duren_spring.constant.ConstantAPIUrl;
 import ac.unindra.roemah_duren_spring.model.request.BranchRequest;
 import ac.unindra.roemah_duren_spring.model.response.BranchResponse;
 import ac.unindra.roemah_duren_spring.model.response.CommonResponse;
@@ -9,16 +9,13 @@ import ac.unindra.roemah_duren_spring.util.*;
 import atlantafx.base.theme.Styles;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.material2.Material2AL;
@@ -27,9 +24,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 
 import java.net.URL;
-import java.util.*;
-
-import static ac.unindra.roemah_duren_spring.util.FXMLUtil.loadFXML;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 public class BranchController implements Initializable {
     @FXML
@@ -64,10 +62,16 @@ public class BranchController implements Initializable {
     public TableColumn<BranchResponse, String> mobilePhoneNoCol;
     @FXML
     public Pagination pagination;
-    private ObservableList<BranchResponse> branches;
+    @FXML
+    public Button searchBtn;
+    @FXML
+    public TextField searchField;
 
+
+    private ObservableList<BranchResponse> branches;
     private final WebClientUtil webClient;
     private BranchResponse selectedBranch;
+
 
     public BranchController() {
         this.webClient = JavaFxApplication.getBean(WebClientUtil.class);
@@ -100,7 +104,7 @@ public class BranchController implements Initializable {
 
         pagination.setPageFactory(number -> {
             webClient.callApiWithQueryParam(
-                    "/api/branches",
+                    ConstantAPIUrl.BranchAPI.BASE_URL,
                     HttpMethod.GET,
                     null,
                     new ParameterizedTypeReference<CommonResponse<List<BranchResponse>>>() {
@@ -117,6 +121,12 @@ public class BranchController implements Initializable {
             return new StackPane();
         });
 
+        searchField.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                doSearch();
+            }
+        });
+
         tableBranch.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 nameField.setText(newSelection.getName());
@@ -129,18 +139,14 @@ public class BranchController implements Initializable {
     }
 
     @FXML
-    public void handleSubmit(ActionEvent actionEvent) {
-        Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> validationMap = new HashMap<>();
-        validationMap.put(nameField, new Pair<>(nameLabelError, input -> input.isEmpty() ? "Nama Cabang wajib di isi!" : ""));
-        validationMap.put(addressField, new Pair<>(addressLabelError, input -> input.isEmpty() ? "Alamat wajib di isi!" : ""));
-        validationMap.put(mobilePhoneField, new Pair<>(mobilePhoneLabelError, input -> input.isEmpty() ? "Nomor Telepon wajib di isi!" : ""));
-        if (!ValidationUtil.validateForm(validationMap)) return;
+    public void handleSubmit() {
+        if (!ValidationUtil.isFormValid(getValidationMap())) return;
 
         if (selectedBranch == null) {
             submitBtn.setText("Loading...");
             submitBtn.setDisable(true);
             webClient.callApi(
-                    "/api/branches",
+                    ConstantAPIUrl.BranchAPI.BASE_URL,
                     HttpMethod.POST,
                     BranchRequest.builder()
                             .name(nameField.getText())
@@ -153,11 +159,11 @@ public class BranchController implements Initializable {
                         submitBtn.setText("Submit");
                         submitBtn.setDisable(false);
                         tableBranch.getItems().add(response.getData());
-                        handleReset(null);
+                        handleReset();
                         NotificationUtil.showNotificationSuccess(main, response.getMessage());
                     }),
                     error -> {
-                        NotificationUtil.showNotificationSuccess(main, error.getMessage());
+                        NotificationUtil.showNotificationError(main, error.getMessage());
                         submitBtn.setText("Submit");
                         submitBtn.setDisable(false);
                     }
@@ -171,7 +177,7 @@ public class BranchController implements Initializable {
                         submitBtn.setText("Loading...");
                         submitBtn.setDisable(true);
                         webClient.callApi(
-                                "/api/branches",
+                                ConstantAPIUrl.BranchAPI.BASE_URL,
                                 HttpMethod.PUT,
                                 BranchRequest.builder()
                                         .id(selectedBranch.getId())
@@ -192,11 +198,11 @@ public class BranchController implements Initializable {
                                                 return branchResponse;
                                             }).toList()
                                     );
-                                    handleReset(null);
+                                    handleReset();
                                     NotificationUtil.showNotificationSuccess(main, response.getMessage());
                                 }),
                                 error -> {
-                                    NotificationUtil.showNotificationSuccess(main, error.getMessage());
+                                    NotificationUtil.showNotificationError(main, error.getMessage());
                                     submitBtn.setText("Submit");
                                     submitBtn.setDisable(false);
                                 }
@@ -207,20 +213,17 @@ public class BranchController implements Initializable {
     }
 
     @FXML
-    public void handleReset(ActionEvent actionEvent) {
-        nameField.setText("");
-        addressField.setText("");
-        mobilePhoneField.setText("");
-        nameLabelError.setText("");
-        addressLabelError.setText("");
-        mobilePhoneLabelError.setText("");
+    public void handleReset() {
         selectedBranch = null;
         removeBtn.setDisable(true);
         submitBtn.setDisable(false);
+
+        Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> validationMap = getValidationMap();
+        ValidationUtil.resetValidation(validationMap);
     }
 
     @FXML
-    public void handleDelete(ActionEvent actionEvent) {
+    public void handleDelete() {
         AlertUtil.confirmDialog(
                 "Konfismasi Hapus",
                 "Konfirmasi Hapus",
@@ -230,7 +233,7 @@ public class BranchController implements Initializable {
                         removeBtn.setText("Loading...");
                         removeBtn.setDisable(true);
                         webClient.callApi(
-                                "/api/branches/" + selectedBranch.getId(),
+                                ConstantAPIUrl.BranchAPI.GET_BASE_URL_WITH_ID(selectedBranch.getId()),
                                 HttpMethod.DELETE,
                                 null,
                                 new ParameterizedTypeReference<>() {
@@ -238,19 +241,45 @@ public class BranchController implements Initializable {
                                 response -> FXMLUtil.updateUI(() -> {
                                     branches.remove(selectedBranch);
                                     tableBranch.getItems().setAll(branches);
-                                    handleReset(null);
+                                    handleReset();
                                     NotificationUtil.showNotificationSuccess(main, response.getMessage());
                                     removeBtn.setText("Hapus");
-                                    removeBtn.setDisable(false);
+                                    removeBtn.setDisable(true);
                                 }),
                                 error -> {
-                                    NotificationUtil.showNotificationSuccess(main, error.getMessage());
+                                    NotificationUtil.showNotificationError(main, error.getMessage());
                                     removeBtn.setText("Hapus");
-                                    removeBtn.setDisable(false);
+                                    removeBtn.setDisable(true);
                                 }
                         );
                     }
                 }
         );
+    }
+
+    @FXML
+    public void doSearch() {
+        webClient.callApiWithQueryParam(
+                ConstantAPIUrl.BranchAPI.BASE_URL,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<CommonResponse<List<BranchResponse>>>() {
+                },
+                Map.of("q", searchField.getText()),
+                response -> {
+                    branches.setAll(response.getData());
+                    tableBranch.getItems().setAll(branches);
+                },
+                error -> FXMLUtil.updateUI(() -> NotificationUtil.showNotificationError(main, error.getMessage()))
+        );
+    }
+
+
+    private Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> getValidationMap() {
+        Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> validationMap = new HashMap<>();
+        validationMap.put(nameField, new Pair<>(nameLabelError, input -> input.isEmpty() ? "Nama Cabang wajib di isi!" : ""));
+        validationMap.put(addressField, new Pair<>(addressLabelError, input -> input.isEmpty() ? "Alamat wajib di isi!" : ""));
+        validationMap.put(mobilePhoneField, new Pair<>(mobilePhoneLabelError, input -> input.isEmpty() ? "Nomor Telepon wajib di isi!" : ""));
+        return validationMap;
     }
 }
