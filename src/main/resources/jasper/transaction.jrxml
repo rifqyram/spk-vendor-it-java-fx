@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MainReportNoGroupLandscape" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoPages" columnWidth="792" leftMargin="20" rightMargin="20" topMargin="50" bottomMargin="50" uuid="d1d0ff4e-5f4b-4d7e-aef3-7dc1d5a4d6c2">
+	<field name="transDate" class="java.lang.String"/>
+	<field name="transactionType" class="java.lang.String"/>
+	<field name="totalPrice" class="java.lang.Long"/>
+	<field name="branch" class="java.lang.String"/>
+	<field name="productName" class="java.lang.String"/>
+	<field name="qty" class="java.lang.Integer"/>
+	<field name="price" class="java.lang.Long"/>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="792" height="30" uuid="7116eda3-b8bd-4d36-8ffc-1d913c4d3320"/>
+				<text><![CDATA[Transaction Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Bold" x="0" y="0" width="120" height="20" uuid="361ebae0-35fa-48b1-b35f-77e8feae9744"/>
+				<textFieldExpression><![CDATA["Transaction Date"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="120" y="0" width="120" height="20" uuid="c3296835-8c15-4321-9416-f0171972e43a"/>
+				<textFieldExpression><![CDATA["Transaction Type"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="240" y="0" width="120" height="20" uuid="a2c1f599-c143-4325-a0c5-8946055261cd"/>
+				<textFieldExpression><![CDATA["Branch"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="360" y="0" width="120" height="20" uuid="b3922b1b-6456-4843-9420-57fa1ac95e4f"/>
+				<textFieldExpression><![CDATA["Product Name"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="480" y="0" width="60" height="20" uuid="2cf12a8d-d4ec-4c85-87b1-711eac915db2"/>
+				<textFieldExpression><![CDATA["Quantity"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="540" y="0" width="120" height="20" uuid="a16fd1c6-5a37-4010-8c56-0ff85364bbcf"/>
+				<textFieldExpression><![CDATA["Price"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="660" y="0" width="120" height="20" uuid="bbe73f70-18ce-419b-8a50-67003916297c"/>
+				<textFieldExpression><![CDATA["Total Price"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="120" height="20" uuid="e5cccee9-bbd1-4eaf-a533-3426c4dc6a5d"/>
+				<textFieldExpression><![CDATA[$F{transDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="120" height="20" uuid="fd2be16c-8dff-403e-9c9f-62218084c8e9"/>
+				<textFieldExpression><![CDATA[$F{transactionType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="120" height="20" uuid="c031a276-3d3d-4ab0-b6a4-37f9f5654be8"/>
+				<textFieldExpression><![CDATA[$F{branch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="120" height="20" uuid="5e17eb8b-92f1-46a6-b915-e904a879874f"/>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="60" height="20" uuid="0bdb34e3-5624-4520-9961-11f3aa03027e"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="540" y="0" width="120" height="20" uuid="9402a906-ebaf-438e-9bc1-ab341e0dd61a"/>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="0" width="120" height="20" uuid="8552e782-9c3d-4b0a-8637-fdf7796ebb61"/>
+				<textFieldExpression><![CDATA[$F{totalPrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

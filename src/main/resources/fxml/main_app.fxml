@@ -14,9 +14,9 @@
    <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <VBox style="-fx-background-color: #C3D0E0FF;" HBox.hgrow="NEVER">
          <children>
-            <ScrollPane hbarPolicy="NEVER" maxWidth="230.0" minWidth="230.0" prefWidth="230.0" style="-fx-background-insets: #C3D0E0FF;">
+            <ScrollPane hbarPolicy="NEVER" maxWidth="230.0" minWidth="230.0" prefHeight="803.0" prefWidth="230.0" style="-fx-background-insets: #C3D0E0FF;" vbarPolicy="NEVER">
                <content>
-                  <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="230.0" minWidth="230.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="230.0" style="-fx-background-color: #C3D0E0FF;">
+                  <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="230.0" minWidth="230.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="801.0" prefWidth="230.0" style="-fx-background-color: #C3D0E0FF;">
                      <children>
                         <Label prefHeight="34.0" prefWidth="231.0" style="-fx-padding: 8; -fx-alignment: center; -fx-background-color: #ffffe;" text="Roemah Duren" textAlignment="CENTER" textFill="#2e3440">
                            <font>
@@ -33,10 +33,13 @@
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="24.0" />
+                           </VBox.margin>
                         </Label>
                         <Label fx:id="masterLabel" text="Master" textFill="#2e3440">
                            <VBox.margin>
-                              <Insets left="24.0" />
+                              <Insets bottom="8.0" />
                            </VBox.margin>
                            <font>
                               <Font name="Arial Bold" size="14.0" />
@@ -44,67 +47,70 @@
                         </Label>
                         <Button fx:id="navDashboard" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toDashboardPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Dashboard" textFill="#fffffe">
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" top="12.0" />
+                              <Insets top="12.0" />
                            </VBox.margin>
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
                         </Button>
                         <Button fx:id="navSupplier" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toSupplierPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Supplier" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
+                              <Insets top="12.0" />
                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="navBranch" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toBranchPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Cabang" textFill="#fffffe">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="button_outlined" />
+                              <String fx:value="accent" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="navProduct" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toProductPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Barang" textFill="#fffffe">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="button_outlined" />
+                              <String fx:value="accent" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="navStock" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toStockPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Persediaan" textFill="#fffffe">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="button_outlined" />
+                              <String fx:value="accent" />
+                           </styleClass>
                         </Button>
                         <Button fx:id="navCustomer" graphicTextGap="8.0" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#toCustomerPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Pelanggan" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
+                              <Insets top="12.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="navProduct" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toProductPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Barang" textFill="#fffffe">
-                           <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
-                           </VBox.margin>
+                        <Button fx:id="navAdmin" graphicTextGap="8.0" layoutX="28.0" layoutY="323.0" mnemonicParsing="false" onAction="#toAdminPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Admin" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
-                        </Button>
-                        <Button fx:id="navBranch" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toBranchPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Cabang" textFill="#fffffe">
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
+                              <Insets top="12.0" />
                            </VBox.margin>
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                              <String fx:value="rounded" />
-                           </styleClass>
-                        </Button>
-                        <Button fx:id="navStock" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toStockPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Persediaan" textFill="#fffffe">
-                           <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                              <String fx:value="rounded" />
-                           </styleClass>
                         </Button>
                         <Label fx:id="transactionLabel" text="Transaksi" textFill="#2e3440">
                            <VBox.margin>
-                              <Insets bottom="4.0" left="24.0" top="4.0" />
+                              <Insets bottom="12.0" top="18.0" />
                            </VBox.margin>
                            <font>
                               <Font name="Arial Bold" size="14.0" />
@@ -112,51 +118,34 @@
                         </Label>
                         <Button fx:id="navTransaction" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toTransactionPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Transaksi" textFill="#fffffe">
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" top="12.0" />
+                              <Insets />
                            </VBox.margin>
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="navOutCome" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toOutcomePage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Pengeluaran" textFill="#fffffe">
-                           <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                              <String fx:value="rounded" />
-                           </styleClass>
-                        </Button>
-                        <Label fx:id="settingLabel" text="Pengaturan" textFill="#2e3440">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="24.0" top="4.0" />
-                           </VBox.margin>
+                        <Label fx:id="transactionLabel1" layoutX="28.0" layoutY="465.0" text="Akun" textFill="#2e3440">
                            <font>
                               <Font name="Arial Bold" size="14.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="18.0" />
+                           </VBox.margin>
                         </Label>
-                        <Button fx:id="navEditProfile" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toProfilePage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Sunting Profile" textFill="#fffffe">
+                        <Button fx:id="navLogout" graphicTextGap="8.0" maxHeight="229.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" prefWidth="194.0" style="-fx-alignment: left;" text="Keluar" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
-                              <String fx:value="rounded" />
                            </styleClass>
                            <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" top="12.0" />
-                           </VBox.margin></Button>
-                        <Button fx:id="navLogout" graphicTextGap="8.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Keluar" textFill="#fffffe">
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                              <String fx:value="rounded" />
-                           </styleClass>
-                           <VBox.margin>
-                              <Insets bottom="8.0" left="18.0" right="18.0" />
-                           </VBox.margin></Button>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
+                     <padding>
+                        <Insets left="18.0" right="18.0" />
+                     </padding>
                   </VBox>
                </content>
             </ScrollPane>

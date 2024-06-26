@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TransferReport" pageWidth="842" pageHeight="595" whenNoDataType="NoPages" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="50" bottomMargin="50" uuid="d1d0ff4e-5f4b-4d7e-aef3-7dc1d5a4d6c2">
+	<field name="productName" class="java.lang.String"/>
+	<field name="quantityTransferred" class="java.lang.Integer"/>
+	<field name="sourceBranch" class="java.lang.String"/>
+	<field name="destinationBranch" class="java.lang.String"/>
+	<field name="transferDate" class="java.lang.String"/>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="782" height="30" uuid="5feefc42-2266-4adf-b908-f8ef63e5cf1a"/>
+				<text><![CDATA[Transfer Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Bold" x="0" y="0" width="200" height="20" uuid="d39faad8-33c0-458f-896b-71daca101082"/>
+				<textFieldExpression><![CDATA["Product Name"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="200" y="0" width="100" height="20" uuid="851b8a90-96b2-4401-ad9a-8f736a4322b1"/>
+				<textFieldExpression><![CDATA["Quantity Transferred"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="300" y="0" width="200" height="20" uuid="918ae2b2-e0a9-45f1-9d3d-b13f906b583f"/>
+				<textFieldExpression><![CDATA["Source Branch"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="500" y="0" width="200" height="20" uuid="64ae1f84-3c0f-4e7e-856b-d17073a847e4"/>
+				<textFieldExpression><![CDATA["Destination Branch"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Bold" x="700" y="0" width="82" height="20" uuid="8c4fe2d3-abce-4f98-bbfe-6434ef88e456"/>
+				<textFieldExpression><![CDATA["Transfer Date"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="20" uuid="32c0919b-bfb7-46a9-92af-eb34a820d3a4"/>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="d4589eaf-e702-4381-958a-265c0f1780af"/>
+				<textFieldExpression><![CDATA[$F{quantityTransferred}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="200" height="20" uuid="321d7250-dda0-43b0-8fe5-41ada5a2e8cc"/>
+				<textFieldExpression><![CDATA[$F{sourceBranch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="200" height="20" uuid="9e6b1aeb-e071-4014-8cdb-14319546dfa9"/>
+				<textFieldExpression><![CDATA[$F{destinationBranch}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="0" width="82" height="20" uuid="8ac09719-f46b-4abf-b217-1f48656711e4"/>
+				<textFieldExpression><![CDATA[$F{transferDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

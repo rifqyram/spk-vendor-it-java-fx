@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.TransactionFormController">
+   <content>
+      <AnchorPane fx:id="main">
+            <VBox prefHeight="965.0" prefWidth="731.0">
+                <padding>
+                    <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                </padding>
+                <Label text="Form Transaction">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+               <VBox.margin>
+                  <Insets bottom="12.0" />
+               </VBox.margin>
+                </Label>
+            <Label text="Informasi Transaksi">
+               <VBox.margin>
+                  <Insets bottom="8.0" top="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <VBox layoutX="34.0" layoutY="75.0" prefHeight="78.0" prefWidth="504.0">
+               <children>
+                  <Label text="Pelanggan" />
+                  <ComboBox fx:id="customerComboBox" prefHeight="26.0" prefWidth="709.0" promptText="-- Pilih Tipe Pelanggan --">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Pilih Pelanggan Jika (optional)" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="customerLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" top="8.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox layoutX="34.0" layoutY="75.0" prefHeight="78.0" prefWidth="504.0">
+               <children>
+                  <Label text="Tipe Transaksi" />
+                  <ComboBox fx:id="transactionTypeComboBox" prefHeight="26.0" prefWidth="707.0" promptText="-- Pilih Tipe Transaksi --">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Pilih Tipe Transaksi" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="transactionTypeLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" top="8.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox prefHeight="88.0" prefWidth="504.0" spacing="14.0">
+               <children>
+                  <VBox maxWidth="1.7976931348623157E308" prefHeight="87.0" prefWidth="342.0">
+                     <children>
+                        <Label text="Cabang" />
+                        <ComboBox fx:id="branchComboBox" prefHeight="26.0" prefWidth="342.0" promptText="-- Pilih Cabang --">
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Label text="Pilih Cabang" textFill="#616161">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="branchLabelError" styleClass="danger">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="targetBranchPane" prefWidth="342.0">
+                     <children>
+                        <Label text="Target Cabang" />
+                        <ComboBox fx:id="targetBranchComboBox" prefHeight="26.0" prefWidth="342.0" promptText="-- Pilih Cabang --">
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                        <Label text="Pilih Target Cabang" textFill="#616161">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="targetBranchLabelError" styleClass="danger">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" top="8.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Label layoutX="34.0" layoutY="75.0" text="Detail Barang">
+               <VBox.margin>
+                  <Insets bottom="8.0" top="8.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <VBox>
+               <children>
+                  <Label text="Barang" />
+                  <ComboBox fx:id="productComboBox" prefHeight="26.0" prefWidth="713.0" promptText="-- Pilih Barang --">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Pilih Barang" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="productLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" top="8.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox prefHeight="92.0" prefWidth="504.0" spacing="14.0">
+               <children>
+                  <VBox prefHeight="148.0" prefWidth="198.0">
+                     <children>
+                        <Label text="Harga" />
+                        <TextField fx:id="priceField" maxWidth="252.0" prefHeight="26.0" prefWidth="198.0">
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="Masukkan Harga Bila Perlu" textFill="#616161">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="priceLabelError" styleClass="danger">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="87.0" prefWidth="165.0">
+                           <children>
+                              <CheckBox fx:id="checkBoxPrice" mnemonicParsing="false" text="Ikuti Harga Dasar">
+                                 <VBox.margin>
+                                    <Insets bottom="8.0" top="8.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <Label fx:id="basePriceLabel" text="{Harga}">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="8.0" />
+                           </VBox.margin>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <HBox prefHeight="148.0" prefWidth="351.0" spacing="14.0">
+                     <children>
+                        <VBox prefHeight="148.0" prefWidth="198.0">
+                           <children>
+                              <Label text="Kuantitas" />
+                              <TextField fx:id="qtyField" maxWidth="252.0" prefHeight="26.0" prefWidth="198.0">
+                                 <VBox.margin>
+                                    <Insets bottom="8.0" top="8.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Label text="Masukkan Banyaknya Kuantitas" textFill="#616161">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="qtyLabelError" styleClass="danger">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <GridPane prefHeight="148.0" prefWidth="98.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <VBox prefHeight="139.0" prefWidth="185.0" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets bottom="8.0" />
+                                 </GridPane.margin>
+                                 <children>
+                                    <Label />
+                                    <Label fx:id="labelStock" text="{Stock}">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="8.0" top="14.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="148.0" prefWidth="111.0">
+                     <children>
+                        <Label />
+                        <Button fx:id="btnAddCart" mnemonicParsing="false" onAction="#addToCart" prefHeight="26.0" prefWidth="117.0" text="Tambah">
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="8.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="4.0" top="8.0" />
+               </VBox.margin>
+            </HBox>
+            <GridPane>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Daftar Barang Keranjang">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalPriceLabel" text="Total Harga: 0" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <TableView fx:id="tableDetail" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="noCol" prefWidth="75.0" text="No" />
+                <TableColumn fx:id="productCol" prefWidth="250.0" text="Barang" />
+                  <TableColumn fx:id="priceCol" prefWidth="130.0" text="Harga" />
+                  <TableColumn fx:id="qtyCol" prefWidth="75.0" text="Kuantitas" />
+                  <TableColumn fx:id="actionsCol" maxWidth="100.0" prefWidth="383.0" text="Actions" />
+              </columns>
+               <VBox.margin>
+                  <Insets bottom="8.0" top="8.0" />
+               </VBox.margin>
+            </TableView>
+      
+                  <HBox prefHeight="27.0" prefWidth="504.0" spacing="10.0">
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit" />
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Cancel" />
+               </children>
+            </HBox>
+            </VBox>
+      </AnchorPane>
+   </content>
+</ScrollPane>

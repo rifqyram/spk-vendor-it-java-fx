@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -25,80 +24,25 @@
                   <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
                </padding>
                <children>
-                  <Label text="Cabang">
+                  <Label text="Manajemen Cabang">
                      <font>
                         <Font name="Arial Bold" size="24.0" />
                      </font>
                   </Label>
-                  <VBox prefHeight="243.0" prefWidth="552.0" style="-fx-background-color: #fffffe; -fx-background-radius: 8;">
-                     <VBox.margin>
-                        <Insets bottom="12.0" top="12.0" />
-                     </VBox.margin>
+                  <GridPane prefHeight="35.0" prefWidth="358.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <Label text="Form Cabang">
-                           <font>
-                              <Font name="Arial Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label text="Nama Cabang">
-                           <VBox.margin>
-                              <Insets top="12.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="nameField" promptText="Nama Cabang">
-                           <VBox.margin>
-                              <Insets bottom="2.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Label fx:id="nameLabelError" prefHeight="0.0" styleClass="danger" />
-                        <Label text="Alamat">
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextArea fx:id="addressField" prefHeight="80.0" prefWidth="528.0" promptText="Alamat">
-                           <padding>
-                              <Insets bottom="4.0" />
-                           </padding>
-                           <VBox.margin>
-                              <Insets bottom="2.0" />
-                           </VBox.margin>
-                        </TextArea>
-                        <Label fx:id="addressLabelError" styleClass="danger" />
-                        <Label text="Nomor Telepon">
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextField fx:id="mobilePhoneField" layoutX="22.0" layoutY="51.0" promptText="Nomor Telepon">
-                           <VBox.margin>
-                              <Insets bottom="2.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Label fx:id="mobilePhoneLabelError" styleClass="danger" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button fx:id="submitBtn" graphicTextGap="8.0" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit">
-                                 <HBox.margin>
-                                    <Insets right="8.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="resetBtn" graphicTextGap="8.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleReset" styleClass="danger" text="Reset">
-                                 <HBox.margin>
-                                    <Insets right="8.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="removeBtn" graphicTextGap="8.0" layoutX="79.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleDelete" styleClass="danger" text="Hapus" />
-                           </children>
-                           <VBox.margin>
-                              <Insets right="8.0" top="18.0" />
-                           </VBox.margin>
-                        </HBox>
+                        <Button fx:id="buttonModalAdd" mnemonicParsing="false" onAction="#openModalAdd" prefHeight="31.0" prefWidth="162.0" styleClass="accent" text="Tambah Cabang" GridPane.halignment="RIGHT" />
                      </children>
-                     <padding>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-                     </padding>
-                  </VBox>
+                     <VBox.margin>
+                        <Insets bottom="12.0" />
+                     </VBox.margin>
+                  </GridPane>
                   <VBox style="-fx-background-color: #fffffe; -fx-background-radius: 8;" VBox.vgrow="ALWAYS">
                      <children>
                         <GridPane>
@@ -135,9 +79,11 @@
                         <TableView fx:id="tableBranch" prefWidth="528.0" styleClass="edge-to-edge" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="noCol" prefWidth="75.0" text="No" />
+                            <TableColumn fx:id="codeCol" prefWidth="100.0" text="Kode" />
                             <TableColumn fx:id="nameCol" prefWidth="148.0" text="Nama Cabang" />
                               <TableColumn fx:id="addressCol" minWidth="2.0" prefWidth="133.0" text="Alamat" />
                               <TableColumn fx:id="mobilePhoneNoCol" minWidth="0.0" prefWidth="162.0" text="Nomor Telepon" />
+                              <TableColumn fx:id="actionsCol" minWidth="0.0" prefWidth="162.0" text="Actions" />
                           </columns>
                            <VBox.margin>
                               <Insets top="12.0" />

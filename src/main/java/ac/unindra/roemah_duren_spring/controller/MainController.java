@@ -4,17 +4,12 @@ import ac.unindra.roemah_duren_spring.JavaFxApplication;
 import ac.unindra.roemah_duren_spring.constant.ConstantPage;
 import ac.unindra.roemah_duren_spring.repository.TokenManager;
 import ac.unindra.roemah_duren_spring.util.FXMLUtil;
-import atlantafx.base.theme.Styles;
-import atlantafx.base.theme.Tweaks;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.material2.Material2AL;
@@ -42,22 +37,18 @@ public class MainController implements Initializable {
     @FXML
     public Button navTransaction;
     @FXML
-    public Button navOutCome;
-    @FXML
-    public Button navEditProfile;
-    @FXML
     public Button navLogout;
     @FXML
     public Label masterLabel;
     @FXML
     public Label transactionLabel;
     @FXML
-    public Label settingLabel;
-    @FXML
     public ScrollPane contentBox;
     @FXML
     public AnchorPane main;
 
+    @FXML
+    public Button navAdmin;
     private final TokenManager tokenManager;
 
 
@@ -74,64 +65,59 @@ public class MainController implements Initializable {
         navBranch.setGraphic(new FontIcon(Material2AL.LOCAL_CONVENIENCE_STORE));
         navStock.setGraphic(new FontIcon(Material2AL.BAR_CHART));
         navTransaction.setGraphic(new FontIcon(Material2AL.ADD_SHOPPING_CART));
-        navOutCome.setGraphic(new FontIcon(Material2AL.ATTACH_MONEY));
-        navEditProfile.setGraphic(new FontIcon(Material2AL.APP_SETTINGS_ALT));
         navLogout.setGraphic(new FontIcon(Material2AL.EXIT_TO_APP));
+        navAdmin.setGraphic(new FontIcon(Material2MZ.PERSON));
 
         FXMLUtil.updateUI(() -> loadPage(ConstantPage.DASHBOARD));
     }
 
     @FXML
-    public void toDashboardPage(ActionEvent e) {
+    public void toDashboardPage() {
         loadPage(ConstantPage.DASHBOARD);
     }
 
     @FXML
-    public void toSupplierPage(ActionEvent actionEvent) {
+    public void toSupplierPage() {
         loadPage(ConstantPage.SUPPLIER);
     }
 
     @FXML
-    public void toCustomerPage(ActionEvent actionEvent) {
+    public void toCustomerPage() {
         loadPage(ConstantPage.CUSTOMER);
     }
 
     @FXML
-    public void toProductPage(ActionEvent e) {
+    public void toProductPage() {
         loadPage(ConstantPage.PRODUCT);
     }
 
     @FXML
-    public void toBranchPage(ActionEvent e) {
+    public void toBranchPage() {
         loadPage(ConstantPage.BRANCH);
     }
 
     @FXML
-    public void toStockPage(ActionEvent e) {
+    public void toStockPage() {
         loadPage(ConstantPage.STOCK);
     }
 
     @FXML
-    public void toTransactionPage(ActionEvent e) {
+    public void toTransactionPage() {
         loadPage(ConstantPage.TRANSACTION);
     }
 
     @FXML
-    public void toOutcomePage(ActionEvent e) {
-        loadPage(ConstantPage.OUTCOME);
+    public void toAdminPage() {
+        loadPage(ConstantPage.ADMIN);
     }
 
-    @FXML
-    public void toProfilePage(ActionEvent e) {
-        loadPage(ConstantPage.PROFILE);
-    }
     private void loadPage(String page) {
         Parent root = loadFXML(page);
         contentBox.setContent(root);
     }
 
     @FXML
-    public void handleLogout(ActionEvent e) {
+    public void handleLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Konfirmasi Logout");
@@ -157,7 +143,5 @@ public class MainController implements Initializable {
             tokenManager.removeToken();
         }
     }
-
-
 
 }

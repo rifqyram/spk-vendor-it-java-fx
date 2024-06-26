@@ -1,6 +1,6 @@
 package ac.unindra.roemah_duren_spring.util;
 
-import ac.unindra.roemah_duren_spring.model.response.CommonResponse;
+import ac.unindra.roemah_duren_spring.dto.response.CommonResponse;
 import ac.unindra.roemah_duren_spring.repository.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -34,9 +34,49 @@ public class WebClientUtil {
                 .build();
     }
 
-    public <T, R> void callApi(String uri, HttpMethod method, T requestBody,
+    public <T, R> void post(String uri, T requestBody, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                            SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApi(uri, HttpMethod.POST, requestBody, responseType, onSuccess, onError);
+    }
+
+    public <T, R> void postWithQueryParam(String uri, T requestBody, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                                         Map<String, String> queryParams, SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApiWithQueryParam(uri, HttpMethod.POST, requestBody, responseType, queryParams, onSuccess, onError);
+    }
+
+    public <T, R> void put(String uri, T requestBody, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                           SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApi(uri, HttpMethod.PUT, requestBody, responseType, onSuccess, onError);
+    }
+
+    public <T, R> void putWithQueryParam(String uri, T requestBody, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                                        Map<String, String> queryParams, SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApiWithQueryParam(uri, HttpMethod.PUT, requestBody, responseType, queryParams, onSuccess, onError);
+    }
+
+    public <R> void get(String uri, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                        SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApi(uri, HttpMethod.GET, null, responseType, onSuccess, onError);
+    }
+
+    public <R> void getWithQueryParam(String uri, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                                     Map<String, String> queryParams, SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApiWithQueryParam(uri, HttpMethod.GET, null, responseType, queryParams, onSuccess, onError);
+    }
+
+    public <R> void delete(String uri, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                           SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApi(uri, HttpMethod.DELETE, null, responseType, onSuccess, onError);
+    }
+
+    public <R> void deleteWithQueryParam(String uri, ParameterizedTypeReference<CommonResponse<R>> responseType,
+                                        Map<String, String> queryParams, SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
+        callApiWithQueryParam(uri, HttpMethod.DELETE, null, responseType, queryParams, onSuccess, onError);
+    }
+
+    private  <T, R> void callApi(String uri, HttpMethod method, T requestBody,
                                ParameterizedTypeReference<CommonResponse<R>> responseType,
-                               SuccessCallback<R> onSuccess, ErrorCallback onError) {
+                               SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
 
         WebClient.RequestBodySpec request = webClient.method(method).uri(uri).accept(MediaType.APPLICATION_JSON);
         WebClient.RequestHeadersSpec<?> requestHeadersSpec;
@@ -54,10 +94,10 @@ public class WebClientUtil {
                 .subscribe(onSuccess::onSuccess, onError::onError);
     }
 
-    public <T, R> void callApiWithQueryParam(String uri, HttpMethod method, T requestBody,
+    private  <T, R> void callApiWithQueryParam(String uri, HttpMethod method, T requestBody,
                                              ParameterizedTypeReference<CommonResponse<R>> responseType,
                                              Map<String, String> queryParams,
-                                             SuccessCallback<R> onSuccess, ErrorCallback onError) {
+                                             SuccessCommonResponseCallback<R> onSuccess, ErrorCallback onError) {
 
         WebClient.RequestBodySpec requestSpec = webClient.method(method)
                 .uri(builder -> {
@@ -84,8 +124,12 @@ public class WebClientUtil {
     }
 
     @FunctionalInterface
-    public interface SuccessCallback<T> {
+    public interface SuccessCommonResponseCallback<T> {
         void onSuccess(CommonResponse<T> response);
+    }
+
+    public interface SuccessCallback<T> {
+        void onSuccess(T response);
     }
 
     @FunctionalInterface

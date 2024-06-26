@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.StockFormController">
+      <VBox prefHeight="340.0" prefWidth="552.0">
+          <padding>
+              <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+          </padding>
+          <Label text="Form Stock">
+              <font>
+                  <Font name="Arial Bold" size="18.0" />
+              </font>
+         <VBox.margin>
+            <Insets bottom="12.0" />
+         </VBox.margin>
+          </Label>
+      <GridPane hgap="14.0" prefHeight="92.0" prefWidth="504.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefWidth="246.0">
+               <children>
+                  <Label text="Barang" />
+                  <ComboBox fx:id="productComboBox" prefHeight="26.0" prefWidth="545.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Pilih Barang" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="productLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox GridPane.columnIndex="1">
+               <children>
+                  <Label text="Cabang" />
+                  <ComboBox fx:id="branchComboBox" prefHeight="26.0" prefWidth="545.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <Label text="Pilih Cabang" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="branchLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <Label layoutX="34.0" layoutY="154.0" text="Stok" />
+      <TextField fx:id="stockField" maxWidth="252.0">
+         <VBox.margin>
+            <Insets bottom="8.0" top="8.0" />
+         </VBox.margin>
+      </TextField>
+      <Label layoutX="34.0" layoutY="197.0" text="Masukkan Banyaknya Stok" textFill="#616161">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="stockLabelError" layoutX="34.0" layoutY="210.0" styleClass="danger">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+
+      <HBox prefHeight="27.0" prefWidth="504.0" spacing="10.0">
+         <VBox.margin>
+            <Insets top="12.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit" />
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Cancel" />
+         </children>
+      </HBox>
+      </VBox>
+</AnchorPane>

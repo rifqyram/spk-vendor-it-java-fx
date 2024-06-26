@@ -2,10 +2,11 @@ package ac.unindra.roemah_duren_spring.controller;
 
 import ac.unindra.roemah_duren_spring.JavaFxApplication;
 import ac.unindra.roemah_duren_spring.constant.ConstantPage;
-import ac.unindra.roemah_duren_spring.model.request.AuthRequest;
-import ac.unindra.roemah_duren_spring.model.response.CommonResponse;
-import ac.unindra.roemah_duren_spring.model.response.LoginResponse;
+import ac.unindra.roemah_duren_spring.dto.request.AuthRequest;
+import ac.unindra.roemah_duren_spring.dto.response.CommonResponse;
+import ac.unindra.roemah_duren_spring.dto.response.LoginResponse;
 import ac.unindra.roemah_duren_spring.repository.TokenManager;
+import ac.unindra.roemah_duren_spring.service.AuthService;
 import ac.unindra.roemah_duren_spring.util.FXMLUtil;
 import ac.unindra.roemah_duren_spring.util.NotificationUtil;
 import ac.unindra.roemah_duren_spring.util.ValidationUtil;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Pair;
 import org.springframework.core.ParameterizedTypeReference;
@@ -25,7 +27,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-    private final WebClientUtil webClient;
+    private final AuthService authService;
     private final TokenManager tokenManager;
 
     @FXML
@@ -45,20 +47,30 @@ public class LoginController implements Initializable {
 
     public LoginController() {
         this.tokenManager = JavaFxApplication.getBean(TokenManager.class);
-        this.webClient = JavaFxApplication.getBean(WebClientUtil.class);
+        this.authService = JavaFxApplication.getBean(AuthService.class);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        emailText.setOnKeyTyped(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+                handleLogin();
+            }
+        });
+        passwordText.setOnKeyTyped(keyEvent -> {
+            if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+                handleLogin();
+            }
+        });
     }
 
     @FXML
-    public void toForgotPasswordPage(ActionEvent actionEvent) {
+    public void toForgotPasswordPage() {
         FXMLUtil.navigationStage(main, ConstantPage.FORGOT_PASSWORD, "Forgot Password | Roemah Duren", false);
     }
 
     @FXML
-    public void handleLogin(ActionEvent actionEvent) {
+    public void handleLogin() {
         ValidationUtil.ValidationStrategy emailValidationStrategy = input -> {
             if (input == null || input.isEmpty()) {
                 return "email ini wajib di isi!";
@@ -70,25 +82,23 @@ public class LoginController implements Initializable {
         Map<TextInputControl, Pair<Label, ValidationUtil.ValidationStrategy>> validationMap = new HashMap<>();
         validationMap.put(emailText, new Pair<>(errorLabelEmail, emailValidationStrategy));
         validationMap.put(passwordText, new Pair<>(errorLabelPassword, input -> input.isEmpty() ? "Password field ini wajib di isi!" : ""));
-        if (ValidationUtil.isFormValid(validationMap)) return;
+
+        if (!ValidationUtil.isFormValid(validationMap)) return;
 
         loginBtn.setText("Loading...");
         loginBtn.setDisable(true);
-        webClient.callApi(
-                "/api/auth/login",
-                HttpMethod.POST,
+
+        authService.login(
                 AuthRequest.builder()
                         .email(emailText.getText())
                         .password(passwordText.getText())
                         .build(),
-                new ParameterizedTypeReference<CommonResponse<LoginResponse>>() {
-                },
                 response -> FXMLUtil.updateUI(() -> {
                     loginBtn.setText("Login");
                     loginBtn.setDisable(false);
 
-                    NotificationUtil.showNotificationSuccess(main, response.getMessage());
-                    tokenManager.saveToken(response.getData().getToken());
+                    NotificationUtil.showNotificationSuccess(main, "Login Berhasil");
+                    tokenManager.saveToken(response.getToken());
 
                     FXMLUtil.navigationStage(main, ConstantPage.MAIN_APP, "Roemah Duren", true);
                 }),

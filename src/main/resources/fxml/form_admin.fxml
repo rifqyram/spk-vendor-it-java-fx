@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" style="-fx-background-color: #fffffe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.AdminFormController">
+    <children>
+        <VBox style="-fx-background-color: #AFB8C133;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                  <VBox prefHeight="437.0" prefWidth="552.0" style="-fx-background-color: #fffffe;">
+                      <VBox.margin>
+                          <Insets />
+                      </VBox.margin>
+                      <children>
+                          <Label text="Form Admin">
+                              <font>
+                                  <Font name="Arial Bold" size="18.0" />
+                              </font>
+                          </Label>
+                          <Label text="NIP">
+                              <VBox.margin>
+                                  <Insets top="12.0" />
+                              </VBox.margin>
+                          </Label>
+                          <TextField fx:id="nipField">
+                              <VBox.margin>
+                                  <Insets bottom="4.0" top="8.0" />
+                              </VBox.margin>
+                          </TextField>
+                  <Label text="Masukkan Nomor Identitas Pegawai" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                          <Label fx:id="nipLabelError" prefHeight="0.0" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Label>
+                          <Label text="Nama">
+                              <VBox.margin>
+                                  <Insets top="4.0" />
+                              </VBox.margin>
+                          </Label>
+                  <TextField fx:id="nameField" layoutX="34.0" layoutY="92.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label layoutX="34.0" layoutY="122.0" text="Masukkan Nama" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                          <Label fx:id="nameLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Label>
+                          <Label text="Email">
+                              <VBox.margin>
+                                  <Insets top="4.0" />
+                              </VBox.margin>
+                          </Label>
+                          <TextField fx:id="emailField" layoutX="22.0" layoutY="51.0" promptText="Email">
+                              <VBox.margin>
+                                  <Insets bottom="4.0" top="8.0" />
+                              </VBox.margin>
+                          </TextField>
+                  <Label layoutX="34.0" layoutY="226.0" text="john.doe@gmail.com" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                          <Label fx:id="emailLabelError" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Label>
+                          <Label layoutX="22.0" layoutY="241.0" text="Nomor Telepon">
+                              <VBox.margin>
+                                  <Insets top="4.0" />
+                              </VBox.margin>
+                  </Label>
+                  <GridPane>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.58695983886719" minWidth="48.91303253173828" prefWidth="48.91303253173828" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.5869674682617" minWidth="10.0" prefWidth="455.5869674682617" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField disable="true" text="+62">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="mobilePhoneField" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="14.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="8.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="8.0" top="8.0" />
+                     </padding>
+                  </GridPane>
+                  <Label layoutX="34.0" layoutY="300.0" text="Masukkan Nomor Telepon tanpa 0/+62" textFill="#616161">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="mobilePhoneLabelError" layoutX="34.0" layoutY="313.0" styleClass="danger">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="14.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" top="4.0" />
+                     </VBox.margin>
+                     <children>
+                        <VBox prefHeight="87.0" prefWidth="345.0">
+                           <children>
+                              <Label text="Password" />
+                              <PasswordField fx:id="passwordField">
+                                 <VBox.margin>
+                                    <Insets bottom="8.0" top="8.0" />
+                                 </VBox.margin>
+                              </PasswordField>
+                              <Label text="Masukkan Password" textFill="#616161">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="passwordLabelError" styleClass="danger">
+                                 <font>
+                                    <Font size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label />
+                              <CheckBox fx:id="showPasswordCheckBox" mnemonicParsing="false" text="Lihat Password">
+                                 <VBox.margin>
+                                    <Insets bottom="8.0" top="12.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <CheckBox fx:id="checkBoxStatus" mnemonicParsing="false" text="Status Akun" />
+                          <HBox prefHeight="28.0" prefWidth="520.0">
+                              <children>
+                                  <Button fx:id="btnSubmit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit">
+                                      <HBox.margin>
+                                          <Insets right="8.0" />
+                                      </HBox.margin>
+                                  </Button>
+                                  <Button fx:id="cancelBtn" graphicTextGap="8.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Cancel">
+                                      <HBox.margin>
+                                          <Insets right="8.0" />
+                                      </HBox.margin>
+                                  </Button>
+                              </children>
+                              <VBox.margin>
+                                  <Insets right="8.0" top="18.0" />
+                              </VBox.margin>
+                          </HBox>
+                      </children>
+                      <padding>
+                          <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                      </padding>
+                  </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.TransactionDetailController">
+    <VBox prefHeight="343.0" prefWidth="653.0">
+        <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+        </padding>
+        <Label text="Detail Transaksi">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Label>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="12.0" top="12.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="printBtn" mnemonicParsing="false" onAction="#doPrint" prefHeight="26.0" prefWidth="86.0" styleClass="danger" text="Print" GridPane.halignment="RIGHT" />
+         </children>
+      </GridPane>
+      <TableView fx:id="tableDetail" prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="noCol" prefWidth="75.0" text="No" />
+          <TableColumn fx:id="transactionIdCol" prefWidth="108.50086212158203" text="Kode Transaksi" />
+            <TableColumn fx:id="productCol" prefWidth="178.98028564453125" text="Barang" />
+            <TableColumn fx:id="qtyCol" prefWidth="77.51971435546875" text="Kuantitas" />
+            <TableColumn fx:id="priceCol" prefWidth="163.50003051757812" text="Harga" />
+        </columns>
+         <VBox.margin>
+            <Insets bottom="12.0" top="18.0" />
+         </VBox.margin>
+      </TableView>
+        <HBox prefHeight="27.0" prefWidth="504.0" spacing="10.0">
+            <VBox.margin>
+                <Insets top="12.0" />
+            </VBox.margin>
+            <Button fx:id="closeBtn" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Tutup" />
+        </HBox>
+    </VBox>
+</AnchorPane>

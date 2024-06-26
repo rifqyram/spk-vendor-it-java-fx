@@ -30,7 +30,7 @@ public class ForgotPasswordController implements Initializable {
     }
 
     @FXML
-    public void toLoginPage(ActionEvent actionEvent) {
+    public void toLoginPage() {
         FXMLUtil.navigationStage(main, ConstantPage.LOGIN, "Login | Roemah Duren", false);
     }
 
