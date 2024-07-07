@@ -29,4 +29,13 @@ public class JasperServiceImpl implements JasperService {
         }
 
     }
+
+    @Override
+    public JasperReport loadReport(String name) {
+        try (InputStream inputStream = ReportFiller.class.getResourceAsStream("/jasper/" + name + ".jrxml")) {
+            return JasperCompileManager.compileReport(inputStream);
+        } catch (JRException | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

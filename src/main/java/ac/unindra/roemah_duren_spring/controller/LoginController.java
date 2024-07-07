@@ -35,8 +35,6 @@ public class LoginController implements Initializable {
     @FXML
     public PasswordField passwordText;
     @FXML
-    public Hyperlink navForgotPassword;
-    @FXML
     public Button loginBtn;
     @FXML
     public AnchorPane main;
@@ -62,11 +60,6 @@ public class LoginController implements Initializable {
                 handleLogin();
             }
         });
-    }
-
-    @FXML
-    public void toForgotPasswordPage() {
-        FXMLUtil.navigationStage(main, ConstantPage.FORGOT_PASSWORD, "Forgot Password | Roemah Duren", false);
     }
 
     @FXML
@@ -100,7 +93,7 @@ public class LoginController implements Initializable {
                     NotificationUtil.showNotificationSuccess(main, "Login Berhasil");
                     tokenManager.saveToken(response.getToken());
 
-                    FXMLUtil.navigationStage(main, ConstantPage.MAIN_APP, "Roemah Duren", true);
+                    FXMLUtil.navigationStage(main, ConstantPage.MAIN_APP, "Dashboard | Roemah Duren", true);
                 }),
                 error -> FXMLUtil.updateUI(() -> {
                     loginBtn.setText("Login");

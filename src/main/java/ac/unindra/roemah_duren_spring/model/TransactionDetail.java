@@ -15,6 +15,7 @@ public class TransactionDetail {
 
     private IntegerProperty qty = new SimpleIntegerProperty();
     private LongProperty price = new SimpleLongProperty();
+    private LongProperty subTotal = new SimpleLongProperty();
 
     public String getId() {
         return id.get();
@@ -46,5 +47,13 @@ public class TransactionDetail {
 
     public void setPrice(long price) {
         this.price.set(price);
+    }
+
+    public long getSubTotal() {
+        return subTotal.get();
+    }
+
+    public void setSubTotal(long subTotal) {
+        this.subTotal.set(subTotal);
     }
 }

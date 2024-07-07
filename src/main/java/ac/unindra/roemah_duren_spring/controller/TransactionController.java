@@ -11,7 +11,6 @@ import ac.unindra.roemah_duren_spring.util.CurrencyUtil;
 import ac.unindra.roemah_duren_spring.util.FXMLUtil;
 import ac.unindra.roemah_duren_spring.util.NotificationUtil;
 import ac.unindra.roemah_duren_spring.util.TableUtil;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,9 +33,7 @@ public class TransactionController implements Initializable {
     public Pagination pagination;
     public TableView<Transaction> tableTransaction;
     public TableColumn<Transaction, Integer> noCol;
-    public TableColumn<Transaction, Customer> customerCol;
     public TableColumn<Transaction, Branch> branchCol;
-    public TableColumn<Transaction, Branch> targetBranchCol;
     public TableColumn<Transaction, String> transDateCol;
     public TableColumn<Transaction, String> transTypeCol;
     public TableColumn<Transaction, Long> totalPriceCol;
@@ -60,25 +57,25 @@ public class TransactionController implements Initializable {
     private void initTables() {
         TableUtil.setColumnResizePolicy(tableTransaction);
         TableUtil.setTableSequence(noCol);
-        customerCol.setCellValueFactory(new PropertyValueFactory<>("customer"));
-        customerCol.setCellFactory(col -> TableUtil.setTableObject(customer -> customer != null ? customer.getName() : null));
 
         branchCol.setCellValueFactory(new PropertyValueFactory<>("branch"));
         branchCol.setCellFactory(col -> TableUtil.setTableObject(Branch::getName));
-
-        targetBranchCol.setCellValueFactory(new PropertyValueFactory<>("targetBranch"));
-        targetBranchCol.setCellFactory(col -> TableUtil.setTableObject(branch -> branch != null ? branch.getName() : null));
 
         transDateCol.setCellValueFactory(new PropertyValueFactory<>("transDate"));
         transTypeCol.setCellValueFactory(new PropertyValueFactory<>("transactionType"));
         totalPriceCol.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         totalPriceCol.setCellFactory(col -> TableUtil.setTableObject(CurrencyUtil::formatCurrencyIDR));
 
-        actionsCol.setCellFactory(col -> TableUtil.createDetailButtonCell((table, index) -> {
-            FXMLUtil.openModal(main, ConstantPage.TRANSACTION_DETAIL, "Detail Transaksi", false, (TransactionDetailController controller) -> {
-                controller.setSelectedTransaction(table.getItems().get(index));
-            });
-        }));
+        actionsCol.setCellFactory(col -> TableUtil.createDetailButtonCell((table, index) ->
+                        FXMLUtil.openModal(
+                                main,
+                                ConstantPage.TRANSACTION_DETAIL,
+                                "Detail Transaksi",
+                                false,
+                                (TransactionDetailController controller) -> controller.setSelectedTransaction(table.getItems().get(index))
+                        )
+                )
+        );
     }
 
     public void openModalAdd() {
@@ -133,8 +130,6 @@ public class TransactionController implements Initializable {
     }
 
     public void openModalPrint() {
-        FXMLUtil.openModal(main, ConstantPage.TRANSACTION_REPORT, "Laporan Transaksi", false, (ReportController controller) -> {
-            controller.setOwnerPane(main);
-        });
+        FXMLUtil.openModal(main, ConstantPage.TRANSACTION_REPORT, "Laporan Transaksi", false, (ReportController controller) -> controller.setOwnerPane(main));
     }
 }

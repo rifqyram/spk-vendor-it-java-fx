@@ -81,8 +81,8 @@
                                         <TableColumn fx:id="nameCol" prefWidth="148.0" text="Nama Produk" />
                                         <TableColumn fx:id="priceCol" minWidth="2.0" prefWidth="133.0" text="Harga" />
                                         <TableColumn fx:id="descriptionCol" minWidth="0.0" prefWidth="162.0" text="Deskripsi" />
-                                        <TableColumn fx:id="actionsCol" minWidth="0.0" prefWidth="162.0" text="Actions" />
                               <TableColumn fx:id="supplierCol" minWidth="0.0" prefWidth="162.0" text="Nama Supplier" />
+                                        <TableColumn fx:id="actionsCol" minWidth="0.0" prefWidth="162.0" text="Actions" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets top="12.0" />

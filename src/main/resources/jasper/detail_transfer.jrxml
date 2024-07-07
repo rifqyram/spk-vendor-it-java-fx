@@ -33,6 +33,7 @@
 	<parameter name="KIRIM_KE" class="java.lang.String"/>
 	<parameter name="TANGGAL" class="java.lang.String"/>
 	<parameter name="TOTAL_PRICE" class="java.lang.String"/>
+	<parameter name="DARI" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -40,17 +41,18 @@
 	<field name="KUANTITAS" class="java.lang.String"/>
 	<field name="HARGA" class="java.lang.String"/>
 	<field name="TOTAL" class="java.lang.String"/>
+	<field name="SUPPLIER" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="247" splitType="Stretch">
+		<band height="285" splitType="Stretch">
 			<staticText>
-				<reportElement x="400" y="20" width="140" height="30" uuid="ab319154-3793-49ee-bcc9-78040094a188"/>
+				<reportElement x="280" y="20" width="260" height="30" uuid="ab319154-3793-49ee-bcc9-78040094a188"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="24"/>
 				</textElement>
-				<text><![CDATA[INVOICE]]></text>
+				<text><![CDATA[DETAIL TRANSFER]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="416" y="50" width="124" height="30" uuid="6d14f802-2fc3-4183-a311-781f0a65eb61"/>
@@ -72,12 +74,12 @@
 				<text><![CDATA[Jln Gg. Bina Warga II No.26 3, RT.3/RW.2, Lubang Buaya, Kec. Cipayung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13810]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="151" width="80" height="19" uuid="f5ef9862-4d3c-48c3-b174-5c8aa5681313"/>
+				<reportElement x="20" y="201" width="80" height="19" uuid="f5ef9862-4d3c-48c3-b174-5c8aa5681313"/>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Kirim Ke :]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerHeight" x="20" y="170" width="160" height="30" uuid="27ff87f1-9686-4951-95d5-bd7ce5dd407c"/>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerHeight" x="20" y="220" width="160" height="30" uuid="27ff87f1-9686-4951-95d5-bd7ce5dd407c"/>
 				<textElement verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -96,42 +98,40 @@
 				<textFieldExpression><![CDATA[$P{TANGGAL}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="17" y="220" width="163" height="22" uuid="112a11f8-a599-4d54-9635-e2d248ff520b"/>
+				<reportElement x="17" y="259" width="143" height="22" uuid="112a11f8-a599-4d54-9635-e2d248ff520b"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[BARANG]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="181" y="220" width="70" height="22" uuid="96c680f9-f664-4ced-b4ef-ef3cb26634d8"/>
+				<reportElement x="181" y="259" width="70" height="22" uuid="96c680f9-f664-4ced-b4ef-ef3cb26634d8"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[KUANTITAS]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="250" y="220" width="139" height="22" uuid="13f94566-c0e6-4f0a-a9fe-314a137edc55"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[HARGA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="390" y="220" width="146" height="22" uuid="782d10b9-602e-4fa8-9835-2c6c64bfb7a9"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[TOTAL]]></text>
-			</staticText>
 			<line>
-				<reportElement x="17" y="243" width="520" height="1" uuid="6d1d7996-4f55-4e02-ac24-5f1db2635f0c"/>
+				<reportElement x="17" y="283" width="520" height="1" uuid="6d1d7996-4f55-4e02-ac24-5f1db2635f0c"/>
 			</line>
+			<staticText>
+				<reportElement x="20" y="141" width="80" height="19" uuid="15780dff-1b8e-41a7-86e7-219b48010d5c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Dari :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" stretchType="ContainerHeight" x="20" y="160" width="160" height="30" uuid="c4cfcfc9-ff2e-4b28-907f-daf219daaf4e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DARI}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>
-		<band height="38" splitType="Stretch">
+		<band height="42" splitType="Stretch">
 			<textField>
-				<reportElement x="17" y="1" width="163" height="30" uuid="1e1d4410-af00-48d9-90eb-f0d1e0583d17"/>
+				<reportElement stretchType="ElementGroupHeight" x="17" y="0" width="143" height="30" uuid="1e1d4410-af00-48d9-90eb-f0d1e0583d17"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{BARANG}]]></textFieldExpression>
 			</textField>
@@ -139,42 +139,13 @@
 				<reportElement x="17" y="34" width="520" height="1" uuid="5ed85cc4-685d-4876-b17d-3067de74e8bb"/>
 			</line>
 			<textField>
-				<reportElement x="180" y="1" width="70" height="30" uuid="c239e2d9-cd49-48be-a2be-5b9ae1448b58"/>
+				<reportElement stretchType="ElementGroupHeight" x="180" y="0" width="70" height="30" uuid="c239e2d9-cd49-48be-a2be-5b9ae1448b58"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{KUANTITAS}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="250" y="1" width="139" height="30" uuid="c968469a-ca2f-4f53-8b1d-ffd482d31d65"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{HARGA}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="390" y="1" width="145" height="30" uuid="8e1b6d54-9186-4db9-80dd-920715efcac2"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<summary>
-		<band height="146" splitType="Stretch">
-			<staticText>
-				<reportElement x="20" y="10" width="160" height="30" uuid="7edefd60-b312-49ff-a469-c4c7ba429160"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Informasi Pembayaran]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="20" y="40" width="160" height="71" uuid="c7902eab-ad00-4feb-9b2a-ce7a48cae12e"/>
-				<textFieldExpression><![CDATA["BANK AIOEO\nNama Akun: Roemah Duren\nNomor Akun: 123-456-7890"]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement stretchType="ElementGroupHeight" x="360" y="12" width="175" height="30" uuid="4016a891-ffaa-4558-9548-328dcf36956e"/>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Total Harga " + $P{TOTAL_PRICE}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="146" splitType="Stretch"/>
 	</summary>
 </jasperReport>

@@ -139,7 +139,6 @@ public class TableUtil {
                     setGraphic(null);
                 } else {
                     setGraphic(detail);
-                    setTooltip(new Tooltip("Detail"));
                 }
             }
         };

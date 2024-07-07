@@ -5,10 +5,11 @@
 	<parameter name="tanggal" class="java.lang.String"/>
 	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
 	<parameter name="rangeTanggal" class="java.lang.String"/>
-	<parameter name="tanggalWaktu" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="tanggalWaktu" class="java.lang.String"/>
 	<field name="branch" class="java.lang.String"/>
+	<field name="totalPerBranch" class="java.lang.String"/>
 	<field name="details" class="java.util.List"/>
-	<field name="targetBranchName" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
 	<group name="BranchGroup"/>
 	<title>
 		<band height="136" splitType="Stretch">
@@ -38,7 +39,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Top">
 					<font size="24"/>
 				</textElement>
-				<text><![CDATA[LAPORAN TRANSFER]]></text>
+				<text><![CDATA[LAPORAN PENJUALAN]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="370" y="80" width="165" height="30" uuid="34b11397-b390-4438-9f2a-9c021ae537b4"/>
@@ -48,25 +49,33 @@
 		</band>
 	</title>
 	<detail>
-		<band height="81" splitType="Stretch">
+		<band height="98" splitType="Stretch">
 			<textField>
 				<reportElement stretchType="RelativeToTallestObject" x="100" y="0" width="170" height="20" uuid="a79b2da6-6693-4ed8-aa91-e4fb84434c76"/>
 				<textFieldExpression><![CDATA[": " + $F{branch}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="37fdc903-5e2e-403d-aaca-08e36f8b59ab"/>
-				<text><![CDATA[Dari Cabang]]></text>
+				<text><![CDATA[Cabang]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="40" width="170" height="20" uuid="794e07d5-9da6-408e-80f0-b5af53660da9"/>
+				<textFieldExpression><![CDATA[": " + $F{totalPerBranch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="8f713735-7f8e-4e58-b84d-2d5630b6139a"/>
+				<text><![CDATA[Total Per Cabang]]></text>
 			</staticText>
 			<textField>
 				<reportElement stretchType="RelativeToTallestObject" x="100" y="20" width="170" height="20" uuid="249faae4-7b8a-46be-a636-c5e6b9d7e422"/>
-				<textFieldExpression><![CDATA[": " + $F{targetBranchName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[": " + $F{customerName}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="20" width="100" height="20" uuid="b5856aea-5bcf-4bb6-b33a-5b3268e9b43d"/>
-				<text><![CDATA[Ke Cabang]]></text>
+				<text><![CDATA[Nama Pelanggan]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="-20" y="50" width="579" height="20" uuid="cdab3aad-d8b6-4fea-9eb6-ba26e3e61aae"/>
+				<reportElement x="-30" y="70" width="579" height="20" uuid="cdab3aad-d8b6-4fea-9eb6-ba26e3e61aae"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRMapCollectionDataSource($F{details})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{subReport}]]></subreportExpression>
 			</subreport>
@@ -82,9 +91,16 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="106">
+		<band height="165">
 			<textField>
-				<reportElement x="370" y="10" width="164" height="70" uuid="ad539a61-a3bc-46c6-981a-0e4a7f66942b"/>
+				<reportElement stretchType="ElementGroupHeight" x="270" y="0" width="264" height="51" uuid="38809d07-5691-4bf5-baef-8ea00f7922f4"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total Keseluruhan: " + $P{grandTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="90" width="164" height="70" uuid="32927343-7000-4aee-ba78-0bcec8d34330"/>
 				<textElement textAlignment="Right" verticalAlignment="Top"/>
 				<textFieldExpression><![CDATA["Jakarta, " + $P{tanggal} + "\n\n\n\nOwner"]]></textFieldExpression>
 			</textField>

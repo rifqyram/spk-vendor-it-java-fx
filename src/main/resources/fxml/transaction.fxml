@@ -82,13 +82,11 @@
                                 <TableView fx:id="tableTransaction" prefWidth="528.0" styleClass="edge-to-edge" VBox.vgrow="ALWAYS">
                                     <columns>
                                         <TableColumn fx:id="noCol" prefWidth="40.617191314697266" text="No" />
-                                        <TableColumn fx:id="customerCol" prefWidth="124.38280487060547" text="Pelanggan" />
-                                        <TableColumn fx:id="branchCol" minWidth="0.0" prefWidth="156.09524536132812" text="Cabang" />
-                                        <TableColumn fx:id="targetBranchCol" prefWidth="143.92578125" text="Target Cabang" />
-                                        <TableColumn fx:id="transDateCol" prefWidth="133.57421875" text="Tanggal Transaksi" />
-                                        <TableColumn fx:id="transTypeCol" prefWidth="108.0604248046875" text="Tipe Transaksi" />
-                                        <TableColumn fx:id="totalPriceCol" prefWidth="110.9483642578125" text="Total Harga" />
-                                        <TableColumn fx:id="actionsCol" prefWidth="96.0516357421875" text="Actions" />
+                                        <TableColumn fx:id="branchCol" minWidth="0.0" prefWidth="218.5" text="Cabang" />
+                                        <TableColumn fx:id="transDateCol" prefWidth="186.0" text="Tanggal Transaksi" />
+                                        <TableColumn fx:id="transTypeCol" prefWidth="146.5" text="Tipe Transaksi" />
+                                        <TableColumn fx:id="totalPriceCol" prefWidth="199.0" text="Total Harga" />
+                                        <TableColumn fx:id="actionsCol" prefWidth="124.0" text="Actions" />
                                     </columns>
                                     <VBox.margin>
                                         <Insets top="12.0" />

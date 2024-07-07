@@ -22,6 +22,7 @@ public class TransactionDetailResponse {
         newTransactionDetail.setStock(stock.toStock());
         newTransactionDetail.setQty(qty);
         newTransactionDetail.setPrice(price);
+        newTransactionDetail.setSubTotal(qty * price);
         return newTransactionDetail;
     }
 }

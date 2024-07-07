@@ -51,11 +51,6 @@
                   <String fx:value="danger" />
                </styleClass>
             </Label>
-              <Hyperlink fx:id="navForgotPassword" layoutX="275.0" onAction="#toForgotPasswordPage" text="Lupa Password?" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
-               <padding>
-                  <Insets right="4.0" />
-               </padding>
-              </Hyperlink>
           </AnchorPane>
           <AnchorPane>
                <Button fx:id="loginBtn" layoutY="3.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="31.0" prefWidth="393.0" styleClass="accent" text="Login" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

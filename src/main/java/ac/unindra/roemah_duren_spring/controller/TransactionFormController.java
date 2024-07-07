@@ -154,7 +154,7 @@ public class TransactionFormController implements Initializable {
         productComboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 selectedStock = newValue;
-                if (selectedType != null && (selectedType.equals("Transfer") || selectedType.equals("Pengembalian"))) {
+                if (selectedType != null && (selectedType.equals("Transfer"))) {
                     checkBoxPrice.setVisible(false);
                     basePriceLabel.setVisible(false);
                     priceField.setDisable(true);
@@ -218,7 +218,7 @@ public class TransactionFormController implements Initializable {
     }
 
     private void initTransTypeComboBox() {
-        transactionTypeComboBox.getItems().setAll(List.of("Pembelian", "Penjualan", "Transfer", "Pengembalian"));
+        transactionTypeComboBox.getItems().setAll(List.of("Pembelian", "Penjualan", "Transfer"));
     }
 
     private void initBranchComboBox() {
@@ -335,6 +335,16 @@ public class TransactionFormController implements Initializable {
             tableDetail.refresh();
         }
 
+        if (selectedType.equalsIgnoreCase("Pembelian")) {
+            tableDetail.getItems().add(transactionDetailModel);
+            clearDetailForm();
+            tableDetail.refresh();
+
+            long totalPrice = tableDetail.getItems().stream().mapToLong(transactionDetail -> Math.toIntExact(transactionDetail.getPrice() * transactionDetail.getQty())).sum();
+            totalPriceLabel.setText("Total Harga: " + CurrencyUtil.formatCurrencyIDR(totalPrice));
+            return;
+        }
+
         int totalQuantity = transactionDetailModel.getQty();
         totalQuantity += tableDetail.getItems().stream().filter(transactionDetail -> transactionDetail.getStock().getId().equals(transactionDetailModel.getStock().getId())).mapToInt(TransactionDetail::getQty).sum();
 
@@ -417,6 +427,7 @@ public class TransactionFormController implements Initializable {
                     }
                     return null;
                 }),
+
                 qtyField, new Pair<>(qtyLabelError, input -> {
                     if (!StringUtils.hasText(input)) {
                         return "Kuantitas harus diisi";
@@ -430,10 +441,6 @@ public class TransactionFormController implements Initializable {
                         return "Kuantitas minimal 1";
                     }
 
-                    if (selectedStock != null && Integer.parseInt(input) > selectedStock.getStock()) {
-                        return "Kuantitas melebihi stok";
-                    }
-
                     return null;
 
                 })
@@ -442,6 +449,8 @@ public class TransactionFormController implements Initializable {
 
     private Map<ComboBoxBase<?>, Pair<Label, ValidationUtil.ValidationStrategyComboBox>> getValidationComboBoxMapAddCart() {
         return Map.of(
+                branchComboBox, new Pair<>(branchLabelError, input -> input.getValue() == null ? "Cabang harus dipilih" : null),
+                transactionTypeComboBox, new Pair<>(transactionTypeLabelError, input -> input.getValue() == null ? "Tipe transaksi harus dipilih" : null),
                 productComboBox, new Pair<>(productLabelError, input -> input.getValue() == null ? "Produk harus dipilih" : null)
         );
     }

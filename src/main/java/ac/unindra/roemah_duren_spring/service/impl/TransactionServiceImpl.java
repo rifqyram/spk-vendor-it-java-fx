@@ -86,9 +86,11 @@ public class TransactionServiceImpl implements TransactionService {
         Map<String, String> map = new HashMap<>();
         map.put("startDate", request.getStartDate().toString());
         map.put("endDate", request.getEndDate().toString());
+
         if (request.getBranchId() != null) {
             map.put("branchId", request.getBranchId());
         }
+
         map.put("type", request.getTransactionType());
 
         webClientUtil.getWithQueryParam(
