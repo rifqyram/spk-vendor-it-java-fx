@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.VendorFormController">
+    <VBox prefHeight="437.0" prefWidth="552.0">
+        <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+        </padding>
+        <Label text="Form Vendor">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="Nama Vendor">
+            <VBox.margin>
+                <Insets top="12.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="textFieldName">
+            <VBox.margin>
+                <Insets bottom="4.0" top="8.0" />
+            </VBox.margin></TextField>
+        <Label text="Masukkan Vendor" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="nameLabelError" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="4.0" />
+            </VBox.margin></Label>
+        <Label layoutX="34.0" layoutY="67.0" text="Email" />
+        <TextField fx:id="emailField" layoutX="34.0" layoutY="92.0" />
+        <Label layoutX="34.0" layoutY="122.0" text="Masukkan Email: Contoh.  john.doe@gmail.com" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="emailLabelError" layoutX="34.0" layoutY="135.0" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        <Label layoutX="34.0" layoutY="67.0" text="Nomor Telepon" />
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.58695983886719" minWidth="48.91303253173828" prefWidth="48.91303253173828" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.5869674682617" minWidth="10.0" prefWidth="455.5869674682617" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField disable="true" prefHeight="26.0" prefWidth="0.0" text="+62">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin></TextField>
+                <TextField fx:id="mobilePhoneNumberField" prefHeight="26.0" prefWidth="544.0" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets left="14.0" />
+                    </GridPane.margin>
+                </TextField>
+            </children>
+            <VBox.margin>
+                <Insets bottom="8.0" top="8.0" />
+            </VBox.margin>
+            <padding>
+                <Insets bottom="8.0" top="8.0" />
+            </padding>
+        </GridPane>
+        <Label layoutX="34.0" layoutY="110.0" text="Masukkan Nomor Telepon tanpa 0/+62" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="mobilePhoneLabelError" layoutX="34.0" layoutY="110.0" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="4.0" />
+            </VBox.margin>
+        </Label>
+        <Label layoutX="34.0" layoutY="140.0" text="Address" />
+        <TextArea fx:id="addressField" prefHeight="127.0" prefWidth="504.0">
+            <VBox.margin>
+                <Insets bottom="4.0" top="8.0" />
+            </VBox.margin></TextArea>
+        <Label layoutX="34.0" layoutY="183.0" text="Jl. Nangka Raya No.58 C, RT.7/RW.5, Tj. Bar., Kec. Jagakarsa, Kota Jakarta Selatan" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="addressLabelError" layoutX="34.0" layoutY="196.0" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="4.0" />
+            </VBox.margin></Label>
+        <HBox prefHeight="27.0" prefWidth="504.0" spacing="10.0">
+            <VBox.margin>
+                <Insets top="12.0" />
+            </VBox.margin>
+            <children>
+                <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit" />
+                <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Cancel" />
+            </children>
+        </HBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.ProjectFormController">
+    <VBox prefHeight="510.0" prefWidth="552.0">
+        <padding>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+        </padding>
+        <Label text="Form Proyek">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+        </Label>
+        <Label text="Nama Proyek">
+            <VBox.margin>
+                <Insets top="12.0" />
+            </VBox.margin>
+        </Label>
+        <TextField fx:id="textFieldName">
+            <VBox.margin>
+                <Insets bottom="4.0" top="8.0" />
+            </VBox.margin></TextField>
+        <Label text="Masukkan Proyek" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="nameLabelError" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="4.0" />
+            </VBox.margin></Label>
+        <Label layoutX="34.0" layoutY="67.0" text="Tanggal Mulai" />
+      <DatePicker fx:id="startDateField" prefHeight="26.0" prefWidth="541.0">
+         <VBox.margin>
+            <Insets bottom="8.0" top="8.0" />
+         </VBox.margin>
+      </DatePicker>
+        <Label layoutX="34.0" layoutY="122.0" text="Masukkan Tanggal Mulai" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="startDateLabelError" layoutX="34.0" layoutY="135.0" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+      <Label text="Tanggal Selesai" />
+      <DatePicker fx:id="endDateField" prefHeight="26.0" prefWidth="541.0">
+         <VBox.margin>
+            <Insets bottom="8.0" top="8.0" />
+         </VBox.margin>
+      </DatePicker>
+      <Label text="Masukkan Tanggal Selesai" textFill="#616161">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="endDateLabelError" styleClass="danger">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+        <Label layoutX="34.0" layoutY="140.0" text="Deskripsi" />
+        <TextArea fx:id="descriptionField" prefHeight="127.0" prefWidth="504.0">
+            <VBox.margin>
+                <Insets bottom="4.0" top="8.0" />
+            </VBox.margin></TextArea>
+        <Label layoutX="34.0" layoutY="183.0" text="Masukkan Deskripsi Proyek" textFill="#616161">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="descriptionLabelError" layoutX="34.0" layoutY="196.0" styleClass="danger">
+            <font>
+                <Font size="12.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="4.0" />
+            </VBox.margin></Label>
+        <HBox prefHeight="27.0" prefWidth="504.0" spacing="10.0">
+            <VBox.margin>
+                <Insets top="12.0" />
+            </VBox.margin>
+            <children>
+                <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Submit" />
+                <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#handleClose" styleClass="danger" text="Cancel" />
+            </children>
+        </HBox>
+    </VBox>
+</AnchorPane>

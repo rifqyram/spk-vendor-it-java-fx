@@ -6,11 +6,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.MainController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.MainController">
    <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <VBox style="-fx-background-color: #C3D0E0FF;" HBox.hgrow="NEVER">
          <children>
@@ -18,12 +21,12 @@
                <content>
                   <VBox fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="230.0" minWidth="230.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="801.0" prefWidth="230.0" style="-fx-background-color: #C3D0E0FF;">
                      <children>
-                        <Label prefHeight="34.0" prefWidth="231.0" style="-fx-padding: 8; -fx-alignment: center; -fx-background-color: #ffffe;" text="Roemah Duren" textAlignment="CENTER" textFill="#2e3440">
+                        <Label layoutX="28.0" layoutY="28.0" prefHeight="34.0" prefWidth="231.0" style="-fx-padding: 8; -fx-alignment: center; -fx-background-color: #ffffe;" text="SPK Vendor IT" textAlignment="CENTER" textFill="#2e3440">
                            <font>
-                              <Font name="Arial Bold" size="18.0" />
+                              <Font name="Arial Bold" size="14.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="18.0" />
+                              <Insets top="24.0" />
                            </VBox.margin>
                         </Label>
                         <Label prefHeight="18.0" prefWidth="230.0" style="-fx-alignment: center;" text="Backoffice V1.0" textFill="#2e3440">
@@ -31,7 +34,7 @@
                               <Insets bottom="12.0" top="12.0" />
                            </padding>
                            <font>
-                              <Font name="Arial Bold" size="13.0" />
+                              <Font name="Arial Bold" size="11.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="24.0" />
@@ -54,7 +57,7 @@
                               <String fx:value="accent" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="navSupplier" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toSupplierPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Supplier" textFill="#fffffe">
+                        <Button fx:id="navCriteria" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toCriteriaPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Kriteria" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
@@ -63,7 +66,7 @@
                               <Insets top="12.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="navBranch" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toBranchPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Cabang" textFill="#fffffe">
+                        <Button fx:id="navVendor" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toVendorPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Vendor" textFill="#fffffe">
                            <VBox.margin>
                               <Insets top="12.0" />
                            </VBox.margin>
@@ -72,25 +75,7 @@
                               <String fx:value="accent" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="navProduct" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toProductPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Barang" textFill="#fffffe">
-                           <VBox.margin>
-                              <Insets top="12.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                           </styleClass>
-                        </Button>
-                        <Button fx:id="navStock" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toStockPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Persediaan" textFill="#fffffe">
-                           <VBox.margin>
-                              <Insets top="12.0" />
-                           </VBox.margin>
-                           <styleClass>
-                              <String fx:value="button_outlined" />
-                              <String fx:value="accent" />
-                           </styleClass>
-                        </Button>
-                        <Button fx:id="navCustomer" graphicTextGap="8.0" layoutX="10.0" layoutY="171.0" mnemonicParsing="false" onAction="#toCustomerPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Pelanggan" textFill="#fffffe">
+                        <Button fx:id="navProject" graphicTextGap="8.0" layoutX="28.0" layoutY="250.0" mnemonicParsing="false" onAction="#toProjectPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Proyek" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
@@ -99,16 +84,16 @@
                               <Insets top="12.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="navAdmin" graphicTextGap="8.0" layoutX="28.0" layoutY="323.0" mnemonicParsing="false" onAction="#toAdminPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Admin" textFill="#fffffe">
+                        <Button fx:id="navUser" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toUserPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Manajemen Pengguna" textFill="#fffffe">
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
                            <styleClass>
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
                            </styleClass>
-                           <VBox.margin>
-                              <Insets top="12.0" />
-                           </VBox.margin>
                         </Button>
-                        <Label fx:id="transactionLabel" text="Transaksi" textFill="#2e3440">
+                        <Label fx:id="transactionLabel" text="Evaluasi Proyek" textFill="#2e3440">
                            <VBox.margin>
                               <Insets bottom="12.0" top="18.0" />
                            </VBox.margin>
@@ -116,7 +101,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="navTransaction" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toTransactionPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Transaksi" textFill="#fffffe">
+                        <Button fx:id="navTransaction" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toTransactionPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Evaluasi" textFill="#fffffe">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -133,6 +118,15 @@
                               <Insets top="18.0" />
                            </VBox.margin>
                         </Label>
+                        <Button fx:id="navSettingsProfile" graphicTextGap="8.0" layoutX="28.0" layoutY="528.0" maxHeight="229.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toSettingsPage" prefHeight="30.0" prefWidth="194.0" style="-fx-alignment: left;" text="Pengaturan Akun" textFill="#fffffe">
+                           <styleClass>
+                              <String fx:value="button_outlined" />
+                              <String fx:value="accent" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </Button>
                         <Button fx:id="navLogout" graphicTextGap="8.0" maxHeight="229.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" prefWidth="194.0" style="-fx-alignment: left;" text="Keluar" textFill="#fffffe">
                            <styleClass>
                               <String fx:value="button_outlined" />
@@ -153,7 +147,38 @@
       </VBox>
       <VBox HBox.hgrow="ALWAYS">
          <children>
-            <ScrollPane fx:id="contentBox" fitToHeight="true" fitToWidth="true" prefHeight="204.0" prefWidth="570.0" VBox.vgrow="ALWAYS" />
+            <HBox prefHeight="65.0" prefWidth="970.0">
+               <children>
+                  <GridPane maxWidth="1.7976931348623157E308" minWidth="-Infinity" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="12.0" top="12.0" />
+                     </HBox.margin>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="adminName" text="Anonymous" GridPane.halignment="RIGHT">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets right="12.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="roleAdmin" text="Role" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="8.0" right="12.0" top="8.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="contentBox" fitToHeight="true" fitToWidth="true" prefHeight="666.0" prefWidth="970.0" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </HBox>

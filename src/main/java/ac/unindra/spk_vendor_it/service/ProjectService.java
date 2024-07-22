@@ -1,0 +1,12 @@
+package ac.unindra.spk_vendor_it.service;
+
+import ac.unindra.spk_vendor_it.model.PageModel;
+import ac.unindra.spk_vendor_it.model.ProjectModel;
+import org.springframework.data.domain.Page;
+
+public interface ProjectService {
+    void create(ProjectModel projectModel);
+    void update(ProjectModel projectModel);
+    Page<ProjectModel> getAll(PageModel pageModel);
+    void delete(String id);
+}

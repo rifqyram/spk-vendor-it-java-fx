@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,170 +8,127 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="733.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.roemah_duren_spring.controller.DashboardController">
+<AnchorPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="733.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.DashboardController">
     <children>
-          <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="733.0" prefHeight="733.0" prefWidth="846.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <padding>
-                  <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
-              </padding>
-              <children>
-            <VBox>
-               <children>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="733.0" prefHeight="733.0" prefWidth="846.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+            </padding>
+            <children>
+                <VBox>
+                    <children>
                         <Label text="Dashboard">
                             <font>
                                 <Font name="Arial Bold" size="24.0" />
                             </font>
+                     <VBox.margin>
+                        <Insets bottom="24.0" />
+                     </VBox.margin>
                         </Label>
-                  <VBox>
-                     <children>
-                        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
-                           <content>
-                              <HBox maxWidth="-Infinity" prefHeight="140.0" spacing="14.0">
-                                 <children>
-                                    <VBox layoutX="534.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #4B70F5; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label text="Total Pendapatan" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="18.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <Label fx:id="labelTotalRevenue" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="8.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="12.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #E88D67; -fx-border-radius: 8; -fx-background-radius: 8;">
-                                       <children>
-                                          <Label text="Total Pengeluaran" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="18.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <Label fx:id="labelTotalExpend" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="8.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets right="12.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox prefWidth="250.0" style="-fx-background-color: #088395; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
-                                       <children>
-                                          <Label text="Total Barang" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="18.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <Label fx:id="labelTotalProduct" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="8.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                    <VBox layoutX="10.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #4B70F5; -fx-border-radius: 8; -fx-background-radius: 8;">
-                                       <children>
-                                          <Label text="Total Pelanggan" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="18.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <Label fx:id="labelTotalCustomer" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="8.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets left="12.0" right="12.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                    <VBox layoutX="272.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #E88D67; -fx-border-radius: 8; -fx-background-radius: 8;">
-                                       <children>
-                                          <Label text="Total Transaksi Hari ini" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="18.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <Label fx:id="labelTotalTransaction" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
-                                             <font>
-                                                <Font name="Arial Bold" size="18.0" />
-                                             </font>
-                                             <VBox.margin>
-                                                <Insets left="24.0" top="8.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                           </content>
-                        </ScrollPane>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="18.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <Label text="Total Penjualan">
-                     <font>
-                        <Font name="Arial Bold" size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="18.0" />
-                     </VBox.margin>
-                  </Label>
-                  <VBox>
-                     <VBox.margin>
-                        <Insets top="18.0" />
-                     </VBox.margin>
-                     <children>
-                        <BarChart fx:id="chartTransaction">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </BarChart>
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-              </children>
-          </VBox>
+                        <VBox>
+                            <children>
+                                <ScrollPane fitToHeight="true" hbarPolicy="NEVER" maxWidth="1.7976931348623157E308" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                                    <content>
+                                        <HBox maxWidth="-Infinity" prefHeight="140.0" spacing="14.0">
+                                            <children>
+                                                <VBox layoutX="534.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #4B70F5; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Jumlah Vendor" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="18.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="labelTotalVendor" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="8.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                    <HBox.margin>
+                                                        <Insets right="12.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #E88D67; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                                    <children>
+                                                        <Label text="Jumlah Proyek" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="18.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="labelTotalProject" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="8.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                    <HBox.margin>
+                                                        <Insets right="12.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                                <VBox prefWidth="250.0" style="-fx-background-color: #088395; -fx-border-radius: 8; -fx-background-radius: 8;" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Jumlah Kriteria" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="18.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="labelTotalCriteria" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="8.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0" prefWidth="250.0" style="-fx-background-color: #4B70F5; -fx-border-radius: 8; -fx-background-radius: 8;">
+                                                    <children>
+                                                        <Label text="Jumlah Evaluasi" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="18.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                        <Label fx:id="labelTotalEvaluation" layoutX="22.0" layoutY="18.0" text="0" textFill="#fffffe">
+                                                            <font>
+                                                                <Font name="Arial Bold" size="18.0" />
+                                                            </font>
+                                                            <VBox.margin>
+                                                                <Insets left="24.0" top="8.0" />
+                                                            </VBox.margin>
+                                                        </Label>
+                                                    </children>
+                                                    <HBox.margin>
+                                                        <Insets left="12.0" right="12.0" />
+                                                    </HBox.margin>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>
