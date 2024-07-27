@@ -19,9 +19,8 @@ public class UserSessionServiceImpl implements UserSessionService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public UserSession setSession(UserCredential userCredential) {
-        if (userSessionRepository.existsByUser_Username(userCredential.getUsername())) {
-            removeSession(userCredential.getUsername());
-        }
+        userSessionRepository.findByUser_Username(userCredential.getUsername()).ifPresent(userSessionRepository::delete);
+        userSessionRepository.flush();
         UserSession session = UserSession.builder()
                 .user(userCredential)
                 .token(UUID.randomUUID().toString())
@@ -37,9 +36,9 @@ public class UserSessionServiceImpl implements UserSessionService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void removeSession(String token) {
-        UserSession session = getSession(token);
-        userSessionRepository.delete(session);
+    public void removeSession(String username) {
+        userSessionRepository.findByUser_Username(username)
+                .ifPresent(userSessionRepository::delete);
     }
 
     @Transactional(rollbackFor = Exception.class)

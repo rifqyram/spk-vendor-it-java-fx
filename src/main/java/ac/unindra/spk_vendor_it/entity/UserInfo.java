@@ -1,5 +1,6 @@
 package ac.unindra.spk_vendor_it.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +31,8 @@ public class UserInfo extends BaseEntity {
     @Column(name = "mobile_phone_no", nullable = false, length = 15, unique = true)
     private String mobilePhoneNo;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private UserCredential user;
 }

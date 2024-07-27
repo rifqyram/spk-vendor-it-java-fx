@@ -6,8 +6,10 @@ import ac.unindra.spk_vendor_it.entity.UserCredential;
 import ac.unindra.spk_vendor_it.entity.UserInfo;
 import ac.unindra.spk_vendor_it.model.PageModel;
 import ac.unindra.spk_vendor_it.model.UserInfoModel;
+import ac.unindra.spk_vendor_it.repository.UserCredentialRepository;
 import ac.unindra.spk_vendor_it.repository.UserInfoRepository;
 import ac.unindra.spk_vendor_it.security.PasswordManager;
+import ac.unindra.spk_vendor_it.service.AuthService;
 import ac.unindra.spk_vendor_it.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserInfoRepository userInfoRepository;
+    private final UserCredentialRepository userCredentialRepository;
+    private final AuthService authService;
     private final PasswordManager passwordManager;
 
     @Transactional(rollbackFor = Exception.class)
@@ -34,6 +38,11 @@ public class UserServiceImpl implements UserService {
                 .password(passwordManager.hashPassword(userInfoModel.getPassword()))
                 .build());
         userInfoRepository.saveAndFlush(entity);
+    }
+
+    @Override
+    public UserCredential getInfoByContext() {
+        return authService.getUserInfo();
     }
 
     @Transactional(readOnly = true)
@@ -51,12 +60,15 @@ public class UserServiceImpl implements UserService {
         UserInfo currentUser = findById(userInfoModel.getId());
 
         UserInfo userInfo = userInfoModel.toEntity();
-        userInfo.getUser().setId(currentUser.getUser().getId());
+        UserCredential user = userInfo.getUser();
+        user.setId(currentUser.getUser().getId());
 
         if (userInfoModel.getPassword() != null) {
-            userInfo.getUser().setPassword(passwordManager.hashPassword(userInfoModel.getPassword()));
+            user.setPassword(passwordManager.hashPassword(userInfoModel.getPassword()));
         }
 
+        userInfo.setUser(user);
+        userCredentialRepository.saveAndFlush(user);
         userInfoRepository.saveAndFlush(userInfo);
     }
 
@@ -65,6 +77,13 @@ public class UserServiceImpl implements UserService {
     public void delete(String id) {
         UserInfo userInfo = findById(id);
         userInfoRepository.delete(userInfo);
+    }
+
+    @Override
+    public void updatePassword(String password) {
+        UserCredential userCredential = authService.getUserInfo();
+        userCredential.setPassword(passwordManager.hashPassword(password));
+        userCredentialRepository.saveAndFlush(userCredential);
     }
 
     @Transactional

@@ -1,6 +1,7 @@
 package ac.unindra.spk_vendor_it.entity;
 
 import ac.unindra.spk_vendor_it.constant.UserRole;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,4 +31,8 @@ public class UserCredential extends BaseEntity {
 
     @OneToOne(mappedBy = "user")
     private UserSession userSession;
+
+    @OneToOne(mappedBy = "user")
+    @JsonManagedReference
+    private UserInfo userInfo;
 }

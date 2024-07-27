@@ -24,6 +24,6 @@ public class ProjectEvaluation extends BaseEntity {
 
     private LocalDateTime evaluationDate;
 
-    @OneToMany(mappedBy = "projectEvaluation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "projectEvaluation", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Evaluation> evaluations;
 }

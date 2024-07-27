@@ -12,4 +12,6 @@ public interface UserSessionRepository extends JpaRepository<UserSession, String
     Optional<UserSession> findByToken(String token);
     Optional<UserSession> findByUser_Username(String username);
     boolean existsByUser_Username(String username);
+
+    void deleteByUser_Username(String username);
 }

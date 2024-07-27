@@ -85,7 +85,7 @@ public class CriteriaFormController implements Initializable {
         nameField.setText(criteriaModel.getName());
         categoryComboBox.setValue(criteriaModel.getCategory());
         descriptionField.setText(criteriaModel.getDescription());
-        tableWeight.getItems().setAll(criteriaModel.getWeightCriteria());
+        tableWeight.getItems().setAll(criteriaModel.getSubCriteria());
 
         ComboBoxValueModel<Integer> weightCriteria = weightCriteriaList.stream()
                 .filter(item -> item.getValue().equals(criteriaModel.getWeight()))
@@ -119,8 +119,7 @@ public class CriteriaFormController implements Initializable {
     }
 
     public void handleSubmit() {
-        if (!ValidationUtil.isFormValid(getMapValidationCriteria())) return;
-        if (!ValidationUtil.isFormValidComboBox(getValidationComboBoxMap())) return;
+        if (!ValidationUtil.isFormValid(getMapValidationCriteria()) && !ValidationUtil.isFormValidComboBox(getValidationComboBoxMap())) return;
         if (criteriaModel == null) {
             processCreate();
         } else {
@@ -188,7 +187,7 @@ public class CriteriaFormController implements Initializable {
                 .category(categoryComboBox.getValue())
                 .description(descriptionField.getText())
                 .weight(weightCriteriaComboBox.getValue().getValue())
-                .weightCriteria(tableWeight.getItems())
+                .subCriteria(tableWeight.getItems())
                 .build();
     }
 
@@ -215,9 +214,8 @@ public class CriteriaFormController implements Initializable {
 
     private Map<ComboBoxBase<?>, Pair<Label, ValidationUtil.ValidationStrategyComboBox>> getValidationComboBoxMap() {
         return Map.of(
-                categoryComboBox, new Pair<>(categoryLabelError, input -> input == null ? "Kategori harus dipilih" : null),
-                weightCriteriaComboBox, new Pair<>(weightCriteriaLabelError, input -> input == null ? "Bobot harus dipilih" : null)
-
+                categoryComboBox, new Pair<>(categoryLabelError, input -> input.getValue() == null ? "Kategori harus dipilih" : null),
+                weightCriteriaComboBox, new Pair<>(weightCriteriaLabelError, input -> input.getValue() == null ? "Bobot harus dipilih" : null)
         );
     }
 

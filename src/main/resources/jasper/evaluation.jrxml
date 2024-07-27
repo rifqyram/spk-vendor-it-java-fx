@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="criteria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de254103-e0d5-4aca-92f2-acdb3ab54152">
+	<parameter name="DAY_DATE_YEAR" class="java.lang.String"/>
+	<parameter name="POSITION" class="java.lang.String"/>
+	<parameter name="USERNAME" class="java.lang.String"/>
+	<parameter name="DATE_TIME" class="java.lang.String"/>
+	<parameter name="SUB_REPORT" class="net.sf.jasperreports.engine.JasperReport"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="NO" class="java.lang.String"/>
+	<field name="PROJECT_NAME" class="java.lang.String"/>
+	<field name="START_DATE" class="java.lang.String"/>
+	<field name="END_DATE" class="java.lang.String"/>
+	<field name="DESCRIPTION" class="java.lang.String"/>
+	<field name="DETAILS" class="java.util.List"/>
+	<field name="EVALUATION_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="156" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="20" width="160" height="30" uuid="2988fb23-fce6-43ba-a4dd-654c39891038"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MIPDEVP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="60" width="210" height="70" uuid="8337d0c8-02b4-49bd-a4a8-12bb8de988b9"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jl Taman Aries Tirta Blok H3 No 12 Ujung, Desa/Kelurahan Meruya Utara,
+Kec. Kembangan, Kota Adm. Jakarta Barat, Provinsi DKI Jakarta,
+Kode Pos: 11620]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="20" width="200" height="110" uuid="0fe23b29-e320-491b-a047-fbff17a8bdca"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="24" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LAPORAN" + "\n" + "HASIL EVALUASI"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="10" width="100" height="22" uuid="c5718dbd-abf2-4161-9fe8-ff86ae3e1a4d"/>
+				<text><![CDATA[Nama Proyek]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="32" width="100" height="22" uuid="cb7104bf-fb9c-4494-affc-2f81d9bf0121"/>
+				<text><![CDATA[Tanggal Mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="54" width="100" height="22" uuid="0e498e46-72fb-4077-80a0-4275b2aea690"/>
+				<text><![CDATA[Tanggal Selesai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="76" width="100" height="22" uuid="7aa30e09-8048-4345-9978-9eabc06eb07c"/>
+				<text><![CDATA[Tanggal Evaluasi]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="10" width="420" height="22" uuid="9603b080-a4e5-4a71-98e5-12f8e3fb6d7b"/>
+				<textFieldExpression><![CDATA[": " + $F{PROJECT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="32" width="420" height="22" uuid="3bc54942-1c77-4443-a0d0-77eaa2d18f9a"/>
+				<textFieldExpression><![CDATA[": " + $F{START_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="54" width="420" height="22" uuid="723d769e-6f95-412f-b3ae-f3d9cd4c34cd"/>
+				<textFieldExpression><![CDATA[": " + $F{END_DATE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="76" width="420" height="22" uuid="ea0fc27a-6fff-41ad-8880-8288dc0e17a3"/>
+				<textFieldExpression><![CDATA[": " + $F{EVALUATION_DATE}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="-20" y="110" width="595" height="20" uuid="6215ef35-b239-400b-8579-27179d690c3f"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRMapCollectionDataSource($F{DETAILS})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUB_REPORT}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="60">
+			<textField>
+				<reportElement x="350" y="30" width="190" height="30" uuid="5bc451b7-bf74-48a3-9f1f-e5145347cbde"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="166" splitType="Stretch">
+			<textField>
+				<reportElement x="350" y="10" width="190" height="30" uuid="f1c13582-c4b8-4851-bcda-093b125f9fbb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Jakarta, " + $P{DAY_DATE_YEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="40" width="190" height="30" uuid="4417fe15-226e-40dd-a011-9ebe680fa1ce"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{POSITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="120" width="190" height="30" uuid="80549b13-d529-4840-b070-7e647d84fd7e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{USERNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

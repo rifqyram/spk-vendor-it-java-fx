@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="733.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.ProfileSettingController">
+   <children>
+      <VBox prefHeight="734.0" prefWidth="825.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="742.0" prefWidth="825.0">
+               <children>
+                  <VBox prefHeight="734.0" prefWidth="479.0" HBox.hgrow="ALWAYS">
+                      <Label text="Atur Profil">
+                          <font>
+                              <Font name="Arial Bold" size="24.0" />
+                          </font>
+                          <VBox.margin>
+                              <Insets bottom="24.0" />
+                          </VBox.margin>
+                      </Label>
+                     <Label layoutX="22.0" layoutY="255.0" text="Ubah Informasi Pengguna">
+                        <font>
+                           <Font name="Arial Bold" size="14.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets bottom="12.0" />
+                        </VBox.margin>
+                     </Label>
+                     <VBox>
+                        <children>
+                           <Label text="Nama" />
+                           <TextField fx:id="nameField">
+                              <VBox.margin>
+                                 <Insets bottom="8.0" top="8.0" />
+                              </VBox.margin>
+                           </TextField>
+                           <Label text="Masukkan Nama" textFill="#616161">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="nameLabelError" styleClass="danger">
+                              <font>
+                                 <Font size="12.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox>
+                        <children>
+                           <Label text="Posisi Pekerjaan" />
+                           <TextField fx:id="positionField">
+                              <VBox.margin>
+                                 <Insets bottom="8.0" top="8.0" />
+                              </VBox.margin>
+                           </TextField>
+                           <Label text="Masukkan Posisi Pekerjaan" textFill="#616161">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="positionErrorLabel" styleClass="danger">
+                              <font>
+                                 <Font size="12.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="87.0" prefWidth="376.0">
+                        <children>
+                           <Label text="Nomor Telepon" />
+                           <GridPane prefHeight="42.0" prefWidth="347.0">
+                              <columnConstraints>
+                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.58695983886719" minWidth="48.91303253173828" prefWidth="48.91303253173828" />
+                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="455.5869674682617" minWidth="10.0" prefWidth="455.5869674682617" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <children>
+                                 <TextField disable="true" text="+62">
+                                    <GridPane.margin>
+                                       <Insets />
+                                    </GridPane.margin>
+                                 </TextField>
+                                 <TextField fx:id="mobilePhoneField" prefHeight="26.0" prefWidth="299.0" GridPane.columnIndex="1">
+                                    <GridPane.margin>
+                                       <Insets left="14.0" />
+                                    </GridPane.margin>
+                                 </TextField>
+                              </children>
+                              <padding>
+                                 <Insets bottom="8.0" top="8.0" />
+                              </padding>
+                           </GridPane>
+                           <Label text="Masukkan Nomor Telepon tanpa 0/+62" textFill="#616161">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Label>
+                           <Label fx:id="mobilePhoneLabelError" styleClass="danger">
+                              <font>
+                                 <Font size="12.0" />
+                              </font>
+                           </Label>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="12.0" />
+                        </VBox.margin>
+                     </VBox>
+                     <Label text="Ubah Password">
+                        <VBox.margin>
+                           <Insets bottom="18.0" top="12.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font name="Arial Bold" size="14.0" />
+                        </font>
+                     </Label>
+                     <HBox spacing="14.0">
+                        <children>
+                           <VBox prefHeight="87.0" prefWidth="345.0">
+                              <children>
+                                 <Label text="Password" />
+                                 <PasswordField fx:id="passwordField">
+                                    <VBox.margin>
+                                       <Insets bottom="8.0" top="8.0" />
+                                    </VBox.margin>
+                                 </PasswordField>
+                                 <Label text="Masukkan Password" textFill="#616161">
+                                    <font>
+                                       <Font size="10.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="passwordLabelError" styleClass="danger">
+                                    <font>
+                                       <Font size="12.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </VBox>
+                           <VBox>
+                              <children>
+                                 <Label />
+                                 <CheckBox fx:id="showPasswordCheckBox" mnemonicParsing="false" text="Lihat Password">
+                                    <VBox.margin>
+                                       <Insets bottom="8.0" top="12.0" />
+                                    </VBox.margin>
+                                 </CheckBox>
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                     <HBox layoutX="22.0" layoutY="73.0" spacing="14.0">
+                        <children>
+                           <VBox prefHeight="87.0" prefWidth="511.0">
+                              <children>
+                                 <Label text="Konfirmasi Password" />
+                                 <PasswordField fx:id="confirmationPasswordField">
+                                    <VBox.margin>
+                                       <Insets bottom="8.0" top="8.0" />
+                                    </VBox.margin>
+                                 </PasswordField>
+                                 <Label text="Masukkan Konfirmasi Password" textFill="#616161">
+                                    <font>
+                                       <Font size="10.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="confirmationPasswordLabelError" styleClass="danger">
+                                    <font>
+                                       <Font size="12.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </VBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="12.0" />
+                        </VBox.margin>
+                     </HBox>
+                     <HBox prefHeight="28.0" prefWidth="520.0">
+                        <children>
+                           <Button fx:id="btnSubmit" graphicTextGap="8.0" mnemonicParsing="false" onAction="#handleSubmit" styleClass="accent" text="Simpan Perubahan">
+                              <HBox.margin>
+                                 <Insets right="8.0" top="12.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" prefWidth="9.0" />
+                  <VBox fillWidth="false" layoutX="10.0" layoutY="10.0" prefHeight="685.0" prefWidth="440.0" spacing="12.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Label text="Informasi Pengguna">
+                           <font>
+                              <Font name="Arial Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="17.0" prefWidth="389.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="119.63665771484375" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="148.86334228515625" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="NIP" />
+                              <Label fx:id="nipValue" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="22.0" layoutY="61.0" prefHeight="17.0" prefWidth="381.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="119.63665771484375" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="148.86334228515625" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Nama" />
+                              <Label fx:id="nameValue" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="22.0" layoutY="90.0" prefHeight="17.0" prefWidth="368.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="119.63665771484375" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="148.86334228515625" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Posisi" />
+                              <Label fx:id="positionValue" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="22.0" layoutY="119.0" prefHeight="17.0" prefWidth="410.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="119.63665771484375" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="148.86334228515625" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Email" />
+                              <Label fx:id="emailValue" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="22.0" layoutY="148.0" prefHeight="17.0" prefWidth="338.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.49493408203125" minWidth="10.0" prefWidth="157.45440673828125" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.54559326171875" minWidth="10.0" prefWidth="180.54559326171875" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Nomor Telepon" />
+                              <Label fx:id="mobilePhoneNoValue" prefHeight="13.0" prefWidth="173.0" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <GridPane layoutX="22.0" layoutY="177.0" prefHeight="17.0" prefWidth="388.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="119.63665771484375" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="148.86334228515625" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Status Akun" />
+                              <Label fx:id="statusAccountValue" text=": " GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding></VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+   </padding>
+</AnchorPane>

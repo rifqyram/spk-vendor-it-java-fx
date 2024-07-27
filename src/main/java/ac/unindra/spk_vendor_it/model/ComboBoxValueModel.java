@@ -2,11 +2,13 @@ package ac.unindra.spk_vendor_it.model;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@EqualsAndHashCode
 public class ComboBoxValueModel<T> {
     private StringProperty label;
 
@@ -31,4 +33,8 @@ public class ComboBoxValueModel<T> {
         this.label.set(label);
     }
 
+    @Override
+    public String toString() {
+        return label.get();
+    }
 }

@@ -35,6 +35,16 @@ public class DateUtil {
         return indonesianFormatter.format(localDateTime);
     }
 
+    public static String strDateTimeFromLocalDate(LocalDate localDate) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return dateTimeFormatter.format(localDate.atStartOfDay());
+    }
+
+    public static String strDayDateFromLocalDate(LocalDate localDate) {
+        DateTimeFormatter indonesianFormatter = DateTimeFormatter.ofPattern("EEEE d MMMM yyyy", new Locale("id", "ID"));
+        return indonesianFormatter.format(localDate);
+    }
+
     public static String strDateTimeFromString(String localDateTimeString) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeString, dateTimeFormatter);

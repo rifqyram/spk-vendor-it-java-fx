@@ -14,6 +14,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CriteriaServiceImpl implements CriteriaService {
@@ -38,6 +40,12 @@ public class CriteriaServiceImpl implements CriteriaService {
         return criteriaPage.map(CriteriaModel::fromEntity);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<CriteriaModel> getAll() {
+        return criteriaRepository.findAll().stream().map(CriteriaModel::fromEntity).toList();
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void update(CriteriaModel criteriaModel) {
@@ -54,6 +62,18 @@ public class CriteriaServiceImpl implements CriteriaService {
     public void delete(String id) {
         Criteria criteria = getCriteria(id);
         criteriaRepository.delete(criteria);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Criteria getOne(String id) {
+        return criteriaRepository.findById(id).orElse(null);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Integer getTotalWeight() {
+        return criteriaRepository.findAll().stream().mapToInt(Criteria::getWeight).sum();
     }
 
     @Transactional(readOnly = true)

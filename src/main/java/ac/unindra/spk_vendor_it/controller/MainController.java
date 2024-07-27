@@ -1,6 +1,7 @@
 package ac.unindra.spk_vendor_it.controller;
 
 import ac.unindra.spk_vendor_it.JavaFxApplication;
+import ac.unindra.spk_vendor_it.constant.UserRole;
 import ac.unindra.spk_vendor_it.entity.UserCredential;
 import ac.unindra.spk_vendor_it.service.AuthService;
 import ac.unindra.spk_vendor_it.util.FXMLUtil;
@@ -8,10 +9,8 @@ import ac.unindra.spk_vendor_it.util.NotificationUtil;
 import ac.unindra.spk_vendor_it.util.StringUtil;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -36,6 +35,7 @@ public class MainController implements Initializable {
     private final AuthService authService;
     public Label adminName;
     public Label roleAdmin;
+    public Button navEvaluationResult;
 
 
     public MainController() {
@@ -46,6 +46,15 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadUserInfo();
         loadPage("dashboard");
+        initRole();
+    }
+
+    private void initRole() {
+        UserCredential userInfo = authService.getUserInfo();
+        if (userInfo.getRole().equals(UserRole.EMPLOYEE)) {
+            navUser.setDisable(true);
+            navTransaction.setDisable(true);
+        }
     }
 
     private void loadUserInfo() {
@@ -92,16 +101,16 @@ public class MainController implements Initializable {
         loadPage("user");
     }
 
-    public void toTransactionPage() {
+    public void toEvaluationPage() {
         loadPage("evaluation");
     }
 
-    public void toTransactionReportPage() {
-        loadPage("transaction_report");
+    public void toEvaluationResultPage() {
+        loadPage("evaluation_result");
     }
 
     public void toSettingsPage() {
-        loadPage("settings");
+        loadPage("profile_setting");
     }
 
     public void handleLogout() {

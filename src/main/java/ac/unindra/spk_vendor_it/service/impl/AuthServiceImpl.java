@@ -11,6 +11,7 @@ import ac.unindra.spk_vendor_it.service.AuthService;
 import ac.unindra.spk_vendor_it.service.UserSessionService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,15 +23,20 @@ public class AuthServiceImpl implements AuthService {
     private final UserSessionService userSessionService;
     private final TokenManager tokenManager;
 
+    @Value("${spk.admin.username}")
+    private String ADMIN_USERNAME;
+    @Value("${spk.admin.password}")
+    private String ADMIN_PASSWORD;
+
     @Transactional(rollbackFor = Exception.class)
     @PostConstruct
     public void initAdmin() {
-        if (userCredentialRepository.existsByUsername("admin")) {
+        if (userCredentialRepository.existsByUsername(ADMIN_USERNAME)) {
             return;
         }
         UserCredential userCredential = UserCredential.builder()
-                .username("admin")
-                .password(passwordManager.hashPassword("password"))
+                .username(ADMIN_USERNAME)
+                .password(passwordManager.hashPassword(ADMIN_PASSWORD))
                 .role(UserRole.ADMIN)
                 .status(true)
                 .build();

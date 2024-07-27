@@ -136,7 +136,7 @@ public class UserFormController implements Initializable {
                 .email(emailField.getText())
                 .mobilePhoneNo(mobilePhoneField.getText())
                 .status(checkBoxStatus.isSelected())
-                .password(passwordField.getText())
+                .password(showPasswordCheckBox.isSelected() ? passwordField.getPromptText() : passwordField.getText())
                 .build();
     }
 

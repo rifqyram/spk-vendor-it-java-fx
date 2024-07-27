@@ -3,7 +3,9 @@ package ac.unindra.spk_vendor_it.model;
 import ac.unindra.spk_vendor_it.entity.Vendor;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class VendorModel {
     private final StringProperty id;
     private final StringProperty name;

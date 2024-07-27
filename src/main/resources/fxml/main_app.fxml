@@ -101,7 +101,7 @@
                               <Font name="Arial Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="navTransaction" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toTransactionPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Evaluasi" textFill="#fffffe">
+                        <Button fx:id="navTransaction" graphicTextGap="8.0" mnemonicParsing="false" onAction="#toEvaluationPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Evaluasi" textFill="#fffffe">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -109,6 +109,15 @@
                               <String fx:value="button_outlined" />
                               <String fx:value="accent" />
                            </styleClass>
+                        </Button>
+                        <Button fx:id="navEvaluationResult" graphicTextGap="8.0" layoutX="28.0" layoutY="410.0" mnemonicParsing="false" onAction="#toEvaluationResultPage" prefHeight="30.0" prefWidth="252.0" style="-fx-alignment: left;" text="Hasil Evaluasi" textFill="#fffffe">
+                           <styleClass>
+                              <String fx:value="button_outlined" />
+                              <String fx:value="accent" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
                         </Button>
                         <Label fx:id="transactionLabel1" layoutX="28.0" layoutY="465.0" text="Akun" textFill="#2e3440">
                            <font>

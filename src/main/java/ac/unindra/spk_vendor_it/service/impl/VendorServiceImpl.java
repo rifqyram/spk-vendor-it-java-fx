@@ -41,6 +41,11 @@ public class VendorServiceImpl implements VendorService {
         return vendorModel.map(VendorModel::fromEntity);
     }
 
+    @Override
+    public List<VendorModel> getAll() {
+        return vendorRepository.findAll().stream().map(VendorModel::fromEntity).toList();
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(String id) {
@@ -54,6 +59,12 @@ public class VendorServiceImpl implements VendorService {
         getVendor(vendorModel.getId());
         Vendor vendor = vendorModel.toEntity();
         vendorRepository.saveAndFlush(vendor);
+    }
+
+    @Transactional
+    @Override
+    public Vendor getOne(String id) {
+        return getVendor(id);
     }
 
     @Transactional(readOnly = true)

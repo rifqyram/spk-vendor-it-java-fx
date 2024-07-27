@@ -1,5 +1,6 @@
 package ac.unindra.spk_vendor_it.model;
 
+import ac.unindra.spk_vendor_it.constant.UserRole;
 import ac.unindra.spk_vendor_it.entity.UserCredential;
 import ac.unindra.spk_vendor_it.entity.UserInfo;
 import javafx.beans.property.BooleanProperty;
@@ -20,9 +21,10 @@ public class UserInfoModel {
     private StringProperty password;
     private BooleanProperty status;
     private StringProperty userId;
+    private UserRole role;
 
     @Builder
-    public UserInfoModel(String id, String nip, String name, String position, String email, String mobilePhoneNo, String password, boolean status, String userId) {
+    public UserInfoModel(String id, String nip, String name, String position, String email, String mobilePhoneNo, String password, boolean status, String userId, UserRole role) {
         this.id = new SimpleStringProperty(id);
         this.nip = new SimpleStringProperty(nip);
         this.name = new SimpleStringProperty(name);
@@ -32,6 +34,7 @@ public class UserInfoModel {
         this.password = new SimpleStringProperty(password);
         this.status = new SimpleBooleanProperty(status);
         this.userId = new SimpleStringProperty(userId);
+        this.role = role;
     }
 
     public String getId() {
@@ -118,6 +121,7 @@ public class UserInfoModel {
                         .id(userId.get())
                         .status(status.get())
                         .username(nip.get())
+                        .role(role)
                         .build())
                 .build();
     }
@@ -132,6 +136,7 @@ public class UserInfoModel {
                 .mobilePhoneNo(userInfo.getMobilePhoneNo())
                 .userId(userInfo.getUser().getId())
                 .status(userInfo.getUser().isStatus())
+                .role(userInfo.getUser().getRole())
                 .build();
     }
 }

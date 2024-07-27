@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="criteria" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de254103-e0d5-4aca-92f2-acdb3ab54152">
+	<parameter name="DAY_DATE_YEAR" class="java.lang.String"/>
+	<parameter name="POSITION" class="java.lang.String"/>
+	<parameter name="USERNAME" class="java.lang.String"/>
+	<parameter name="DATE_TIME" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="NO" class="java.lang.String"/>
+	<field name="VENDOR_NAME" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="MOBILE_PHONE_NO" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement x="400" y="20" width="140" height="60" uuid="b1fbebfc-7472-4b09-847b-64a9d9359f9f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[LAPORAN VENDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="20" width="160" height="30" uuid="2988fb23-fce6-43ba-a4dd-654c39891038"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MIPDEVP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="60" width="210" height="70" uuid="8337d0c8-02b4-49bd-a4a8-12bb8de988b9"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Jl Taman Aries Tirta Blok H3 No 12 Ujung, Desa/Kelurahan Meruya Utara,
+Kec. Kembangan, Kota Adm. Jakarta Barat, Provinsi DKI Jakarta,
+Kode Pos: 11620]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="10" width="110" height="22" uuid="16b6b7e5-730e-4f00-8339-6e852b4b5d55"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Vendor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="10" width="90" height="22" uuid="5f7efdfb-0ec8-48ad-b3ed-3524156afad7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nomor Telepon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="10" width="59" height="22" uuid="9c5c4752-804a-44f3-abd4-3cb6bb1de5c2"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="10" width="80" height="22" uuid="96dc9778-dde4-4718-a194-aff7c0f4c76e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="10" width="150" height="22" uuid="491149af-2e3b-4cf3-b2cc-3c7e04a8bcd6"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<line>
+				<reportElement x="21" y="32" width="520" height="1" uuid="0fad46c2-7bff-48eb-a172-39d1e8dad895"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<line>
+				<reportElement stretchType="ContainerHeight" x="20" y="35" width="520" height="1" uuid="56450c46-d18e-49a9-8cf9-abb89b202dba"/>
+			</line>
+			<textField>
+				<reportElement x="20" y="10" width="60" height="22" uuid="bd968e8c-256a-4999-8bd9-8dc752369c44"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NO}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="80" y="10" width="110" height="22" uuid="d87871ac-3594-4a7f-8577-10c5582cced8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VENDOR_NAME}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="200" y="10" width="80" height="22" uuid="fe6040a3-e145-4480-8440-757ebb255946"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="290" y="10" width="90" height="22" uuid="48fe516e-1e8e-4441-af89-c845cfb260f5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MOBILE_PHONE_NO}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="390" y="10" width="150" height="22" uuid="eb29a3a0-42e4-4007-9565-f6bd63b4a238"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="60">
+			<textField>
+				<reportElement x="350" y="30" width="190" height="30" uuid="5bc451b7-bf74-48a3-9f1f-e5145347cbde"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{DATE_TIME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="166" splitType="Stretch">
+			<textField>
+				<reportElement x="350" y="30" width="190" height="30" uuid="f1c13582-c4b8-4851-bcda-093b125f9fbb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Jakarta, " + $P{DAY_DATE_YEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="60" width="190" height="30" uuid="4417fe15-226e-40dd-a011-9ebe680fa1ce"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{POSITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="130" width="190" height="30" uuid="80549b13-d529-4840-b070-7e647d84fd7e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{USERNAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

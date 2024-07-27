@@ -22,7 +22,7 @@ public class CriteriaModel {
 
     @Setter
     @Getter
-    private List<WeightCriteriaModel> weightCriteria;
+    private List<WeightCriteriaModel> subCriteria;
 
     public CriteriaModel() {
         this.id = new SimpleStringProperty();
@@ -30,17 +30,17 @@ public class CriteriaModel {
         this.description = new SimpleStringProperty();
         this.category = new SimpleStringProperty();
         this.weight = new SimpleIntegerProperty();
-        this.weightCriteria = new ArrayList<>();
+        this.subCriteria = new ArrayList<>();
     }
 
     @Builder
-    public CriteriaModel(String id, String name, String description, String category, Integer weight, List<WeightCriteriaModel> weightCriteria) {
+    public CriteriaModel(String id, String name, String description, String category, Integer weight, List<WeightCriteriaModel> subCriteria) {
         this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.category = new SimpleStringProperty(category);
         this.weight = new SimpleIntegerProperty(weight);
-        this.weightCriteria = weightCriteria;
+        this.subCriteria = subCriteria;
     }
 
     public String getId() {
@@ -90,7 +90,7 @@ public class CriteriaModel {
                 .description(this.getDescription())
                 .category(CriteriaCategory.fromString(this.getCategory()))
                 .weight(this.getWeight())
-                .subCriteria(this.getWeightCriteria().stream().map(WeightCriteriaModel::toEntity).toList())
+                .subCriteria(this.getSubCriteria().stream().map(WeightCriteriaModel::toEntity).toList())
                 .build();
     }
 
@@ -101,7 +101,7 @@ public class CriteriaModel {
                 .description(criteria.getDescription())
                 .category(criteria.getCategory().getDescription())
                 .weight(criteria.getWeight())
-                .weightCriteria(criteria.getSubCriteria().stream().map(WeightCriteriaModel::fromEntity).toList())
+                .subCriteria(criteria.getSubCriteria().stream().map(WeightCriteriaModel::fromEntity).toList())
                 .build();
     }
 }

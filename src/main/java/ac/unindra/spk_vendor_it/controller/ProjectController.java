@@ -2,15 +2,16 @@ package ac.unindra.spk_vendor_it.controller;
 
 import ac.unindra.spk_vendor_it.JavaFxApplication;
 import ac.unindra.spk_vendor_it.constant.ResponseMessage;
+import ac.unindra.spk_vendor_it.constant.UserRole;
+import ac.unindra.spk_vendor_it.entity.UserCredential;
+import ac.unindra.spk_vendor_it.entity.UserInfo;
 import ac.unindra.spk_vendor_it.model.PageModel;
 import ac.unindra.spk_vendor_it.model.ProjectModel;
+import ac.unindra.spk_vendor_it.service.AuthService;
+import ac.unindra.spk_vendor_it.service.JasperService;
 import ac.unindra.spk_vendor_it.service.ProjectService;
-import ac.unindra.spk_vendor_it.util.AlertUtil;
-import ac.unindra.spk_vendor_it.util.FXMLUtil;
-import ac.unindra.spk_vendor_it.util.NotificationUtil;
-import ac.unindra.spk_vendor_it.util.TableUtil;
+import ac.unindra.spk_vendor_it.util.*;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,7 +24,9 @@ import org.kordamp.ikonli.material2.Material2MZ;
 import org.springframework.data.domain.Page;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class ProjectController implements Initializable {
     public AnchorPane main;
@@ -41,8 +44,12 @@ public class ProjectController implements Initializable {
     public Button printReport;
 
     private final ProjectService projectService;
+    private final AuthService authService;
+    private final JasperService jasperService;
 
     public ProjectController() {
+        this.jasperService = JavaFxApplication.getBean(JasperService.class);
+        this.authService = JavaFxApplication.getBean(AuthService.class);
         this.projectService = JavaFxApplication.getBean(ProjectService.class);
     }
 
@@ -52,6 +59,15 @@ public class ProjectController implements Initializable {
         initTableData();
         handlePagination();
         handleSearch();
+        initRole();
+    }
+
+    private void initRole() {
+        UserCredential userInfo = authService.getUserInfo();
+        if (userInfo.getRole().equals(UserRole.EMPLOYEE)) {
+            buttonModalAdd.setVisible(false);
+            actionsCol.setVisible(false);
+        }
     }
 
     private void setupButtonIcons() {
@@ -126,12 +142,17 @@ public class ProjectController implements Initializable {
     }
 
     private void handleSuccessResponse() {
-        NotificationUtil.showNotificationSuccess(main, ResponseMessage.SUCCESS_DELETE);
-        doSearch();
+        FXMLUtil.updateUI(() -> {
+            NotificationUtil.showNotificationSuccess(main, ResponseMessage.SUCCESS_DELETE);
+            doSearch();
+        });
     }
 
     private void handleErrorResponse(String error) {
-        NotificationUtil.showNotificationError(main, error);
+        FXMLUtil.updateUI(() -> {
+            NotificationUtil.showNotificationError(main, error);
+            resetPrintReport();
+        });
     }
 
     public void openModalAdd() {
@@ -175,5 +196,56 @@ public class ProjectController implements Initializable {
     }
 
     public void doPrintReport() {
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() {
+                List<ProjectModel> projectModels = projectService.getAll();
+                List<Map<String, Object>> data = new ArrayList<>();
+                UserCredential user = authService.getUserInfo();
+
+                int no = 1;
+                for (ProjectModel projectModel : projectModels) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("NO", String.valueOf(no++));
+                    map.put("PROJECT_NAME", projectModel.getName());
+                    map.put("START_DATE", projectModel.getStartDate().toString());
+                    map.put("END_DATE", projectModel.getEndDate().toString());
+                    map.put("DESCRIPTION", projectModel.getDescription());
+                    data.add(map);
+                }
+
+                Map<String, Object> params = new HashMap<>();
+                params.put("DAY_DATE_YEAR", DateUtil.strDayDateFromLocalDate(LocalDate.now()));
+                params.put("DATE_TIME", DateUtil.strDateTimeFromLocalDateTime(LocalDateTime.now()));
+
+                if (user.getRole().equals(UserRole.ADMIN)) {
+                    params.put("POSITION", "Chief Executive Officer");
+                    params.put("USERNAME", "Jution Candra Kirana");
+                } else {
+                    UserInfo userInfo = authService.getUserInfo().getUserInfo();
+                    params.put("POSITION", userInfo.getPosition());
+                    params.put("USERNAME", userInfo.getName());
+                }
+
+                jasperService.createReport(main, "project", data, params);
+                return null;
+            }
+        };
+
+        task.setOnRunning(e -> setLoadingPrintReport());
+        task.setOnSucceeded(event -> resetPrintReport());
+        task.setOnFailed(e -> handleErrorResponse(e.getSource().getException().getMessage()));
+        task.setOnCancelled(e -> handleErrorResponse(e.getSource().getException().getMessage()));
+        new Thread(task).start();
+    }
+
+    private void resetPrintReport() {
+        printReport.setText("Cetak Laporan");
+        printReport.setDisable(false);
+    }
+
+    private void setLoadingPrintReport() {
+        printReport.setText("Loading...");
+        printReport.setDisable(true);
     }
 }

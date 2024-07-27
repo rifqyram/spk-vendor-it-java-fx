@@ -18,11 +18,18 @@ import java.util.List;
 @NoArgsConstructor
 @SuperBuilder
 public class Evaluation extends BaseEntity {
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "project_evaluation_id")
     private ProjectEvaluation projectEvaluation;
 
     @ManyToOne
     @JoinColumn(name = "vendor_id", nullable = false)
     private Vendor vendor;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "evaluation_result_id", nullable = false)
+    private EvaluationResult evaluationResult;
+
+    @OneToMany(mappedBy = "evaluation", cascade = CascadeType.ALL)
+    private List<EvaluationDetail> evaluationDetails;
 }
