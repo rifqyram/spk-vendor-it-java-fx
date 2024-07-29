@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" prefWidth="603.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.CriteriaFormController">
+<ScrollPane hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" prefHeight="618.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ac.unindra.spk_vendor_it.controller.CriteriaFormController">
     <content>
         <AnchorPane fx:id="main" prefHeight="1067.0" prefWidth="601.0">
             <VBox prefHeight="1077.0" prefWidth="601.0">
